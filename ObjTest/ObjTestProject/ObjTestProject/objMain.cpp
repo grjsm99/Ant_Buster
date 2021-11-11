@@ -6,11 +6,11 @@
 #include <vector>
 #include "gl/glew.h"
 #include "gl/freeglut.h"
-#include "glm/glm.hpp"
-#include "glm/ext.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+#include "gl/glm/glm.hpp"
+#include "gl/glm/ext.hpp"
+#include "gl/glm/gtc/matrix_transform.hpp"
 #include "shader.h"
-
+#pragma comment(lib, "freeglut.lib")
 using namespace std;
 
 
