@@ -3,9 +3,9 @@
 #include <vector>
 #include "gl/glew.h"
 #include "gl/freeglut.h"
-#include "gl/glm/glm.hpp"
-#include "gl/glm/ext.hpp"
-#include "gl/glm/gtc/matrix_transform.hpp"
+#include "glm/glm.hpp"
+#include "glm/ext.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #pragma comment(lib, "freeglut.lib")
 
 std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
@@ -89,7 +89,7 @@ int loadObj(const char* filename)
 			normalIndices.push_back(normalIndex[2]);
 		}
 	}
-
+	
 	std::cout << "minX: " << minX << " minY: " << minY << " minZ: " << minZ << std::endl;
 	std::cout << "maxX: " << maxX << " maxY: " << maxY << " maxZ: " << maxZ << std::endl;
 

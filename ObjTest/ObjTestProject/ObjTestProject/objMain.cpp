@@ -1,22 +1,15 @@
 // Reading Obj file
 #define  _CRT_SECURE_NO_WARNINGS
-
-
 #include <iostream>
 #include <vector>
 #include "gl/glew.h"
 #include "gl/freeglut.h"
-#include "gl/glm/glm.hpp"
-#include "gl/glm/ext.hpp"
-#include "gl/glm/gtc/matrix_transform.hpp"
+#include "glm/glm.hpp"
+#include "glm/ext.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #include "shader.h"
 #pragma comment(lib, "freeglut.lib")
 using namespace std;
-
-
-GLuint g_window_w = 600;
-GLuint g_window_h = 600;
-
 
 extern std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
 extern std::vector< glm::vec3 > temp_vertices;
@@ -48,6 +41,9 @@ float* sphere_object;
 int num_Triangle;
 float sunSize;
 
+
+int g_window_w = 800;
+int g_window_h = 600;
 
 int main(int argc, char** argv)
 {
