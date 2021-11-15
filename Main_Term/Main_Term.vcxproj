@@ -108,6 +108,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>freeglut.lib glew32.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -139,18 +140,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="glManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="model_3d.cpp" />
     <ClCompile Include="model_maker.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="state.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
     <ClInclude Include="glManager.h" />
     <ClInclude Include="model_3d.h" />
     <ClInclude Include="model_maker.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="state.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

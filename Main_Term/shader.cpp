@@ -1,5 +1,10 @@
 #include "shader.h"
 
+
+Shader::Shader() {
+	cam = Camera();
+}
+
 char* filetobuf(const char* file)
 {
 	FILE* fptr;
@@ -68,5 +73,5 @@ void Shader::InitShader(const char* vsName, const char* fsName) {
 	//--- 여러 개의 세이더프로그램 만들 수 있고, 그 중 한개의 프로그램을 사용하려면
 	//--- glUseProgram 함수를 호출하여 사용 할 특정 프로그램을 지정한다.
 	//--- 사용하기 직전에 호출할 수 있다.
-	shaderID.push_back(ShaderProgramID);
+	shaderID = ShaderProgramID;
 }

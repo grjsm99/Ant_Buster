@@ -140,7 +140,7 @@ void ModelMaker::LoadObj(const char* filename) {
 
 }
 
-Model3D ModelMaker::MakeModel3D(GLuint _shaderID, std::string posName, std::string normalName) {
+Model3D ModelMaker::MakeModel3D(GLuint shaderName, std::string posName, std::string normalName) {
 	Model3D model;
 
 	GLuint VBO_position, VBO_normal;
@@ -152,13 +152,13 @@ Model3D ModelMaker::MakeModel3D(GLuint _shaderID, std::string posName, std::stri
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_position);
 	glBufferData(GL_ARRAY_BUFFER, out_vertex.size() * sizeof(glm::vec3), &out_vertex[0], GL_STATIC_DRAW);
-	GLint pAttribute = glGetAttribLocation(_shaderID, posName.c_str());
+	GLint pAttribute = glGetAttribLocation(shaderName, posName.c_str());
 	glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 	glEnableVertexAttribArray(pAttribute);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_normal);
 	glBufferData(GL_ARRAY_BUFFER, out_normal.size() * sizeof(glm::vec3), &out_normal[0], GL_STATIC_DRAW);
-	GLint nAttribute = glGetAttribLocation(_shaderID, normalName.c_str());
+	GLint nAttribute = glGetAttribLocation(shaderName, normalName.c_str());
 	glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 	glEnableVertexAttribArray(nAttribute);
 

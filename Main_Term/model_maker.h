@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "model_3d.h"
+#include "shader.h"
 
 class ModelMaker {
 private:
@@ -30,7 +31,7 @@ public:
 
 	void LoadObj(const char* filename);
 
-	Model3D MakeModel3D(GLuint _shaderID, std::string posName, std::string normalName );
+	Model3D MakeModel3D(GLuint shadeNname, std::string posName, std::string normalName );
 
 };
 

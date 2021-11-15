@@ -6,14 +6,16 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <vector>
+#include "camera.h"
 
 class Shader {
-	std::vector<GLuint> shaderID;
-
+	GLuint shaderID;
+	Camera cam;
+	
 public:
-	Shader() {};
+	Shader();
 	void InitShader(const char* vsName, const char* fsName);
-	GLuint rtsh(int i) {
-		return shaderID[i];
+	GLuint rtsh() {
+		return shaderID;
 	}
 };

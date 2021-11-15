@@ -8,37 +8,37 @@
 #include <glm/ext.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-
 #include "model_3d.h"
 #include "model_maker.h"
 #include "transform.h"
 #include "glManager.h"
 #include "shader.h"
-#include <random>
-#include <list>
+#include "camera.h"
 #pragma comment(lib, "freeglut.lib")
 #pragma comment(lib, "glew32.lib")
 #pragma endregion
 
-Model3D m3d;
-ModelMaker make;
-Shader shaderID;
-GLint width, height;
 
 #define winHeight 600
 #define winWidth 600
 using namespace std;
 
+Model3D m3d;
+ModelMaker make;
+Shader shader;
+GLManager* glptr;
+
+
 void Initbuffer() {
 	make.LoadObj("sphere.obj");
-	m3d = make.MakeModel3D(shaderID.rtsh(0), "vPos", "nPos");
+	m3d = make.MakeModel3D(shader.rtsh(), "vPos", "nPos");
 }
-
 
 void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설정 { //--- 윈도우 생성하기
 {
-	GLManager gl(600, 600, argc, argv);
-	shaderID.InitShader("V1.glsl", "F1.glsl");
+	GLManager gl(winWidth, winHeight, argc, argv);
+	glptr = &gl;
+	shader.InitShader("V1.glsl", "F1.glsl");
 	Initbuffer();
 	gl.mainLoop();
 }

@@ -13,42 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Unit">
+      <UniqueIdentifier>{716d0261-e8e5-45f7-abe2-bfa4f79be8a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\State">
+      <UniqueIdentifier>{4297d5b2-0eb3-44ad-a5ad-42438f93305f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Model/Shader">
+      <UniqueIdentifier>{3db9c80a-2235-4051-ab5e-d067ed471084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Model/Shader">
+      <UniqueIdentifier>{0ae0edd8-e38f-42d2-b15d-f9b2321a3c93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\State">
+      <UniqueIdentifier>{6e1abfaa-5234-412d-9b4b-a72842353510}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Unit">
+      <UniqueIdentifier>{baf7df83-1e2a-4b8d-8548-e2f3e82285e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="glManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="model_3d.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="model_maker.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="glManager.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="model_maker.cpp">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="model_3d.cpp">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="state.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="glManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="model_3d.h">
+    <ClInclude Include="transform.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="model_maker.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Model/Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="model_3d.h">
+      <Filter>헤더 파일\Model/Shader</Filter>
     </ClInclude>
     <ClInclude Include="shader.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Model/Shader</Filter>
     </ClInclude>
-    <ClInclude Include="transform.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="glManager.h">
+      <Filter>헤더 파일\State</Filter>
+    </ClInclude>
+    <ClInclude Include="state.h">
+      <Filter>헤더 파일\State</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
