@@ -23,4 +23,17 @@ public:
 	glm::mat4 GetModelMat();
 	glm::mat4 GetNormalMat();
 
+	// 바라보는 방향으로 이동
+	void MoveFront(float speed);
+	// 타켓지점으로 이동
+	void MovePoint(float speed, glm::vec3 targetPos);
+
+	// y축으로 radian만큼 회전
+	void TurnBody(float radian);
+	// 타겟 방향으로 y각도를 바꾼다.
+	void TurnTarget(glm::vec3 targetPos);
+
+	// scale 에 value를 곱한다.
+	void MultiplySize(float value);
+
 };

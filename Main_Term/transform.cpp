@@ -33,3 +33,46 @@ glm::mat4 Transform::GetNormalMat() {
 	modelMat = glm::rotate(modelMat, glm::radians(rotation.x), glm::vec3(1, 0, 0));
 	return modelMat;
 }
+
+void Transform::MoveFront(float speed) {
+	// (0,0,speed)벡터를 내가 바라노는 방향이 되도록 행렬을 곱셈하여
+	glm::mat4 matrix(1.0f);
+	matrix = glm::rotate(matrix, glm::radians(rotation.z), glm::vec3(1, 0, 1));
+	matrix = glm::rotate(matrix, glm::radians(rotation.y), glm::vec3(1, 1, 0));
+	matrix = glm::rotate(matrix, glm::radians(rotation.x), glm::vec3(1, 0, 0));
+	glm::vec3 movePos = matrix * glm::vec4(0, 0, speed, 0);	
+
+	//구한 벡터를 현재의 위치에 더한다.
+	pos += movePos;
+}
+void Transform::MovePoint(float speed, glm::vec3 targetPos) {
+	glm::vec3 movePos = targetPos - pos;
+	pos += glm::normalize(movePos) * speed;
+}
+
+void Transform::TurnBody(float radian) {
+	rotation.y += radian;
+}
+void Transform::TurnTarget(glm::vec3 targetPos) {
+	glm::vec3 z(0, 0, 1);
+
+	//외적의 높이를 구함( 이걸로 0~180도인지 180~360인지를 구분할수 있다.)
+	float l = glm::cross(z, targetPos).y;
+	//세타를 구함
+	float theta = glm::acos(glm::dot(z, targetPos) / (glm::length(z) * glm::length(targetPos)));
+	// l를 이용해 진짜 각도값을 구한다.
+	float degree;
+	if (l >= 0) {
+		degree = glm::degrees(theta);
+	}
+	else {
+		degree = 360 - glm::degrees(theta);
+	}
+
+	//각도를 적용한다.
+	rotation.y = degree;
+}
+
+void Transform::MultiplySize(float value) {
+	scale *= value;
+}
