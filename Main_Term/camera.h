@@ -12,6 +12,7 @@ public:
 		cameraUp = glm::vec3(0, 0, 1);
 	}
 	void draw() {};
+	void update() {};
 	glm::vec3 camPos() { return GetPos(); };
 	glm::vec3 camDirec() { return cameraDirection; };
 	glm::vec3 camUp() { return cameraUp; };

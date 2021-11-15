@@ -18,5 +18,8 @@ public:
 	void draw() {
 		model->Draw();
 	}
+	void update() {
+		MoveFront(0.01);
+	};
 };
 

@@ -57,6 +57,7 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 		model *= (*it)->GetModelMat();
 		glUniformMatrix4fv(modelLoca, 1, GL_FALSE, glm::value_ptr(model));
 		(*it)->draw();
+		(*it)->update();
 	}
 	glUseProgram(0);
 
@@ -85,7 +86,6 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
 	case 'p':
-		k += 0.1;
 		glutPostRedisplay();
 		break;
 	case 'q':

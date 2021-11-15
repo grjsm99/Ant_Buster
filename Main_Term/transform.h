@@ -9,6 +9,7 @@ private:
 	glm::vec3 scale;
 public:
 	virtual void draw() = 0;
+	virtual void update() = 0;
 	Transform();
 	Transform(glm::vec3 _pos, glm::vec3 _rotation, glm::vec3 _scale);
 
