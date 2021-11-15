@@ -2,7 +2,7 @@
 
 
 Shader::Shader() {
-	cam = Camera();
+
 }
 
 char* filetobuf(const char* file)

@@ -9,9 +9,9 @@
 #include "camera.h"
 
 class Shader {
+
 	GLuint shaderID;
-	Camera cam;
-	
+
 public:
 	Shader();
 	void InitShader(const char* vsName, const char* fsName);

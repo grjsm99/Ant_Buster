@@ -145,8 +145,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="model_3d.cpp" />
     <ClCompile Include="model_maker.cpp" />
-    <ClCompile Include="object.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="state.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
@@ -155,8 +155,8 @@
     <ClInclude Include="glManager.h" />
     <ClInclude Include="model_3d.h" />
     <ClInclude Include="model_maker.h" />
-    <ClInclude Include="object.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="state.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>

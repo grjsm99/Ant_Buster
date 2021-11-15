@@ -1,5 +1,5 @@
 #include "transform.h"
-
+#include <iostream>
 Transform::Transform() {
 	glm::vec3 pos = glm::vec3(0, 0, 0);
 	glm::vec3 rotation = glm::vec3(0, 0, 0);

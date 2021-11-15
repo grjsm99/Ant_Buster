@@ -54,17 +54,14 @@
     <ClCompile Include="state.cpp">
       <Filter>소스 파일\State</Filter>
     </ClCompile>
-    <ClCompile Include="object.cpp">
-      <Filter>소스 파일\Unit</Filter>
-    </ClCompile>
     <ClCompile Include="camera.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="transform.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="model_maker.h">
       <Filter>헤더 파일\Model/Shader</Filter>
     </ClInclude>
@@ -80,10 +77,13 @@
     <ClInclude Include="state.h">
       <Filter>헤더 파일\State</Filter>
     </ClInclude>
-    <ClInclude Include="object.h">
+    <ClInclude Include="camera.h">
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
+    <ClInclude Include="transform.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>

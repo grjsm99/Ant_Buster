@@ -3,10 +3,12 @@
 #include "state.h"
 #include "shader.h"
 #include "glManager.h"
+
 extern Shader shader;
 extern Model3D m3d;
 extern ModelMaker make;
 extern GLManager* glptr;
+
 float k = 0.0;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
@@ -39,13 +41,7 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	int lightColorLocation = glGetUniformLocation(shader.rtsh(), "lightColor"); //--- lightColor 값 전달: (1.0, 1.0, 1.0) 백색
 	glUniform3f(lightColorLocation, 1.0f, 1.0f, 1.0f);
 
-
-	glm::vec3 cameraPos = glm::vec3(k, 0, 2.5f); // 카메라의 위치
-	std::cout << k << "," << 2.5;
-	glm::vec3 cameraDirection = glm::vec3(k, 0.0f, 0.0f);
-	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-
-	view = glm::lookAt(cameraPos, cameraDirection, cameraUp);
+	view = glm::lookAt(mainState::cam.camPos(), mainState::cam.camDirec(), mainState::cam.camUp());
 
 	projection = glm::perspective(glm::radians(45.0f), (float)600 / (float)600, 0.1f, 100.0f);
 
@@ -53,10 +49,15 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	glUniformMatrix4fv(viewLoca, 1, GL_FALSE, glm::value_ptr(view));
 	glUniformMatrix4fv(projLoca, 1, GL_FALSE, glm::value_ptr(projection));
 
-
+	auto tmp = model;
 	int colPos = glGetUniformLocation(shader.rtsh(), "pColor");
 	glUniform3f(colPos, 1, 0, 1);
-	m3d.Draw();
+	for (auto it = mainState::objlist.begin(); it != mainState::objlist.end(); it++) {
+		model = tmp;
+		model *= (*it)->GetModelMat();
+		glUniformMatrix4fv(modelLoca, 1, GL_FALSE, glm::value_ptr(model));
+		(*it)->draw();
+	}
 	glUseProgram(0);
 
 	glutSwapBuffers(); // 화면에 출력하기

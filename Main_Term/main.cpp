@@ -25,9 +25,12 @@ using namespace std;
 
 Model3D m3d;
 ModelMaker make;
+
 Shader shader;
 GLManager* glptr;
-
+//Camera startState::cam = Camera();
+Camera mainState::cam = Camera();
+std::vector<Transform*> mainState::objlist;
 
 void Initbuffer() {
 	make.LoadObj("sphere.obj");
