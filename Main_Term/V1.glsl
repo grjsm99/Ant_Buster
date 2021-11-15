@@ -18,5 +18,5 @@ void main()
 	gl_Position = projectionTransform * viewTransform * modelTransform * vec4(vPos, 1);	
 	passColor = vColor;
 	fragPos = vec3(modelTransform * vec4(vPos, 1));
-	passNor = vec3(normalTransform * vec4(nPos, 1));
+	passNor = nPos;
 }

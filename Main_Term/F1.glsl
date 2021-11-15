@@ -27,7 +27,7 @@ void main()
 	specularLight = pow(specularLight, shininess);
 	vec3 specular = specularLight * lightColor;
 	
-
+	
 	vec3 result = (ambient + diffuse + specular) * pColor;
 	
 	fragmentColor = vec4(result, 1.0);
