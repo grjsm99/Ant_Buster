@@ -193,9 +193,12 @@ GLvoid startState::Mouse(int button, int state, int x, int y) {
 GLvoid startState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
 	case 'p':
-		glptr->chstate(&mainState());
+	{
+		State* newState = new mainState();
+		glptr->chstate(newState);
 		glutPostRedisplay();
 		break;
+	}
 	case 'q':
 		glutDestroyWindow(1);
 		break;

@@ -19,7 +19,8 @@ GLManager::GLManager(int winWidth, int winHeight, int argc, char** argv) {
 	}
 	else	std::cout << "GLEW Initialized\n";
 
-	pushState(&startState());
+	State* newState = new startState();
+	pushState(newState);
 
 	//Initbuffer();
 }
@@ -39,6 +40,7 @@ void GLManager::pushState(State* s) {
 }
 
 void GLManager::chstate(State* s) {
+	delete statelist.back();
 	statelist.pop_back();
 	pushState(s);
 }
