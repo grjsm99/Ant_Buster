@@ -28,7 +28,8 @@ void Initbuffer() {
 	GloVar::titleScreen = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
-	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[1].GetShaderID(), "vPos", "vNormal", "tPos");
+	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[1].GetShaderID(), "vPos", "vNormal");
 
 
 	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");

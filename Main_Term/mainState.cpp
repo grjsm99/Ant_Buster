@@ -2,6 +2,7 @@
 
 Camera mainState::camera;
 Light mainState::sun;
+Plain mainState::plain;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -42,6 +43,9 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	glUniform3f(camPosLocation, camera.Eye().x, camera.Eye().y, camera.Eye().z);
 
 	
+	//바닥 그리기
+	plain.Draw();
+
 
 	glutSwapBuffers(); // 화면에 출력하기
 }

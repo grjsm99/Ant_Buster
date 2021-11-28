@@ -2,6 +2,7 @@
 
 Camera::Camera() {
 	transfrom.SetDir(glm::normalize(glm::vec3(0, -1, -2)));
+	transfrom.SetPos(glm::vec3(0, 5, 10));
 }
 
 glm::vec3 Camera::Eye() {
