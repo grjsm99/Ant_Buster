@@ -15,5 +15,4 @@ public:
 	void RotateRight(float degree);
 	void RotateUp(float degree);
 	void RotateDown(float degree);
-
 };

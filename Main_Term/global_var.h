@@ -9,9 +9,11 @@ public:
 	static int winHeight;
 	static int  winWidth;
 
-	static Shader shader;
+	static Shader shader[3];
 
 	static GLManager* glptr;
+
+	static Texture TitleTexture;
 
 	static Model3D model_plain;
 	static ModelMaker modelMaker;

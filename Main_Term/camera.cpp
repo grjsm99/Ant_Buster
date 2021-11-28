@@ -17,9 +17,11 @@ glm::vec3 Camera::Up() {
 void Camera::Move(glm::vec3 value) {
 	transfrom.SetPos(transfrom.GetPos() + value);
 }
+
 void Camera::MoveFront(float speed) {
 	transfrom.SetPos(transfrom.GetPos() + transfrom.GetDir() * speed);
 }
+
 void Camera::RotateLeft(float degree) {
 	glm::vec3 currentDir = transfrom.GetDir();
 	currentDir = glm::rotate(glm::mat4(1.0f), glm::radians(degree), glm::vec3(0, 1, 0)) * glm::vec4(currentDir, 1.0f);

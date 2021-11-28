@@ -10,7 +10,6 @@
 
 class Shader {
 	GLuint shaderID;
-	Camera cam;
 	
 public:
 	Shader();

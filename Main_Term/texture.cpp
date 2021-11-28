@@ -5,8 +5,6 @@ Texture::Texture() {}
 
 void Texture::InitTexture(GLuint _shaderID, std::string fileName, std::string samplerName) {
 
-	stbi_set_flip_vertically_on_load(true);
-	stbi_set_flip_vertically_on_load_thread(true);
 
 	glGenTextures(1, &texture); //--- 텍스처 생성
 	glBindTexture(GL_TEXTURE_2D, texture); //--- 텍스처 바인딩

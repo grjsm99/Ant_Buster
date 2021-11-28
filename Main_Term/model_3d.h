@@ -7,7 +7,6 @@ private:
 	GLuint VAO;
 	int num_Triangle;
 
-
 public:
 	float minX, maxX, minY, maxY, minZ, maxZ;
 

@@ -5,7 +5,7 @@ Light mainState::sun;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
-	GLuint shaderID = GloVar::shader.GetShaderID();
+	GLuint shaderID = GloVar::shader[1].GetShaderID();
 
 	GLfloat rColor, gColor, bColor;
 
