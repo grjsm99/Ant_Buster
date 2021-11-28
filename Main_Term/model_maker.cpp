@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "model_maker.h"
+#include <iostream>	//임시
 
 //모델메이커
 ModelMaker::~ModelMaker() {
@@ -14,6 +15,36 @@ ModelMaker::~ModelMaker() {
 	out_vertex.shrink_to_fit();
 	out_normal.shrink_to_fit();
 	out_uv.shrink_to_fit();
+}
+
+void ModelMaker::SetRotation(glm::vec3 _rotation) {
+	rotation = _rotation;
+}
+void ModelMaker::SetSize(glm::vec3 _size) {
+	size = _size;
+}
+void ModelMaker::SetLocation(glm::vec3 _location) {
+	location = _location;
+}
+void ModelMaker::ResetRotation() {
+	rotation = glm::vec3(0, 0, 0);
+}
+void ModelMaker::ResetSize() {
+	size = glm::vec3(1, 1, 1);
+}
+void ModelMaker::ResetLocation() {
+	location = glm::vec3(0, 0, 0);
+}
+
+void ModelMaker::SetTransform(glm::vec3 _rotation, glm::vec3 _size, glm::vec3 _location) {
+	SetRotation(_rotation);
+	SetSize(_size);
+	SetLocation(_location);
+}
+void ModelMaker::ResetTransform() {
+	ResetRotation();
+	ResetSize();
+	ResetLocation();
 }
 
 void ModelMaker::LoadObj(const char* filename) {
@@ -31,9 +62,9 @@ void ModelMaker::LoadObj(const char* filename) {
 	out_uv.clear();
 
 
-	//
-	minX = 0.0; minY = 0.0; minZ = 0.0;
-	maxX = 0.0; maxY = 0.0; maxZ = 0.0;
+	//min, max 초기화
+	minX = minY = minZ = std::numeric_limits<float>::max();
+	maxX = maxY = maxZ = std::numeric_limits<float>::min();
 
 	FILE* objFile;
 
@@ -96,19 +127,53 @@ void ModelMaker::LoadObj(const char* filename) {
 	// 모델이 [-0.5, 0.5], [-0.5, 0.5], [-0.5, 0.5] 크기안에 맞도록 조정하기
 	glm::mat4 standard_transform(1.0f);
 	float maxSide = std::max({ maxX - minX, maxY - minY, maxZ - minZ });
-	standard_transform = glm::scale(standard_transform, glm::vec3( 1 / maxSide, 1 / maxSide, 1 / maxSide) );
-	standard_transform = glm::translate(standard_transform, glm::vec3(-(maxX + minX) / 2, -(maxY + minY) / 2, -(maxZ + minZ) / 2));
+	standard_transform = glm::scale(standard_transform, glm::vec3( 1.0f / maxSide, 1.0f / maxSide, 1.0f / maxSide) );
+	standard_transform = glm::translate(standard_transform, glm::vec3(-(maxX + minX) / 2.0f, -(maxY + minY) / 2.0f, -(maxZ + minZ) / 2.0f));
 
 	for (unsigned int i = 0; i < temp_vertices.size(); ++i) {
 		temp_vertices[i] = standard_transform * glm::vec4(temp_vertices[i], 1.0f);
 	}
 
+	//설정한 transform(rotation, size, location)로 변형
+		//정점에 대해서 수행
+	glm::mat4 transform(1.0f);
+	transform = glm::translate(transform, location);
+	transform = glm::rotate(transform, glm::radians(rotation.z), glm::vec3(0,0,1));
+	transform = glm::rotate(transform, glm::radians(rotation.y), glm::vec3(0,1,0));
+	transform = glm::rotate(transform, glm::radians(rotation.x), glm::vec3(1,0,0));
+	transform = glm::scale(transform, size);
+
+	for (unsigned int i = 0; i < temp_vertices.size(); ++i) {
+		temp_vertices[i] = transform * glm::vec4(temp_vertices[i], 1.0f);
+	}
+		//노멀에 대해서 수행(비균등 신축일 경우를 대비해서)
+	transform = glm::mat4(1.0f);
+	transform = glm::rotate(transform, glm::radians(rotation.z), glm::vec3(0, 0, 1));
+	transform = glm::rotate(transform, glm::radians(rotation.y), glm::vec3(0, 1, 0));
+	transform = glm::rotate(transform, glm::radians(rotation.x), glm::vec3(1, 0, 0));
+	transform = glm::transpose( glm::inverse( glm::scale(transform, size) ));
+
+	for (unsigned int i = 0; i < temp_normals.size(); ++i) {
+		temp_normals[i] = glm::normalize(glm::vec3(transform * glm::vec4(temp_normals[i], 1.0f)));
+	}
+
+	//min, max 초기화
+	minX = minY = minZ = std::numeric_limits<float>::max();
+	maxX = maxY = maxZ = std::numeric_limits<float>::min();
 
 	// initBuffer 할 버텍스 만들기
 	for (unsigned int i = 0; i < vertexIndices.size(); i++) {
 		unsigned int vertexIndex = vertexIndices[i];
 		glm::vec3 vertex = temp_vertices[vertexIndex];
 		out_vertex.push_back(vertex);
+
+		//(회전, 신축, 이동 등으로 변형되어) min, max 다시 구하기
+		if (vertex.x < minX) minX = vertex.x;
+		if (vertex.y < minY) minY = vertex.y;
+		if (vertex.z < minZ) minZ = vertex.z;
+		if (vertex.x > maxX) maxX = vertex.x;
+		if (vertex.y > maxY) maxY = vertex.y;
+		if (vertex.z > maxZ) maxZ = vertex.z;
 	}
 	for (unsigned int i = 0; i < uvIndices.size(); i++) {
 		unsigned int uvIndex = uvIndices[i];
@@ -120,14 +185,8 @@ void ModelMaker::LoadObj(const char* filename) {
 		glm::vec3 vertex = temp_normals[normalIndex];
 		out_normal.push_back(vertex);
 	}
-
+	
 	num_Triangle = out_vertex.size();
-	maxX = (maxX - (minX + maxX) / 2) / maxSide;
-	minX = -maxX;
-	maxY = (maxY - (minY + maxY) / 2) / maxSide;
-	minY = -maxY;
-	maxZ = (maxZ - (minZ + maxY) / 2) / maxSide;
-	minZ = -maxZ;
 
 	//필요없는 벡터 삭제
 	temp_vertices.shrink_to_fit();
@@ -140,7 +199,7 @@ void ModelMaker::LoadObj(const char* filename) {
 
 }
 
-Model3D ModelMaker::MakeModel3D(GLuint shaderName, std::string posName, std::string normalName) {
+Model3D ModelMaker::MakeModel3D(GLuint _shaderID, std::string posName, std::string normalName) {
 	Model3D model;
 
 	GLuint VBO_position, VBO_normal;
@@ -152,13 +211,13 @@ Model3D ModelMaker::MakeModel3D(GLuint shaderName, std::string posName, std::str
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_position);
 	glBufferData(GL_ARRAY_BUFFER, out_vertex.size() * sizeof(glm::vec3), &out_vertex[0], GL_STATIC_DRAW);
-	GLint pAttribute = glGetAttribLocation(shaderName, posName.c_str());
+	GLint pAttribute = glGetAttribLocation(_shaderID, posName.c_str());
 	glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 	glEnableVertexAttribArray(pAttribute);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_normal);
 	glBufferData(GL_ARRAY_BUFFER, out_normal.size() * sizeof(glm::vec3), &out_normal[0], GL_STATIC_DRAW);
-	GLint nAttribute = glGetAttribLocation(shaderName, normalName.c_str());
+	GLint nAttribute = glGetAttribLocation(_shaderID, normalName.c_str());
 	glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 	glEnableVertexAttribArray(nAttribute);
 
@@ -170,7 +229,47 @@ Model3D ModelMaker::MakeModel3D(GLuint shaderName, std::string posName, std::str
 	model.minY = minY;
 	model.maxZ = maxZ;
 	model.minZ = minZ;
-	
+
+	return model;
+}
+
+Model3D ModelMaker::MakeModel3D(GLuint _shaderID, std::string posName, std::string normalName, std::string textureName) {
+	Model3D model;
+
+	GLuint VBO_position, VBO_normal, VBO_texture;
+	glGenVertexArrays(1, model.GetPVAO()); //--- VAO 를 지정하고 할당하기
+	glGenBuffers(1, &VBO_position);
+	glGenBuffers(1, &VBO_normal);
+	glGenBuffers(1, &VBO_texture);
+
+	glBindVertexArray(model.GetVAO()); //--- VAO를 바인드하기
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_position);
+	glBufferData(GL_ARRAY_BUFFER, out_vertex.size() * sizeof(glm::vec3), &out_vertex[0], GL_STATIC_DRAW);
+	GLint pAttribute = glGetAttribLocation(_shaderID, posName.c_str());
+	glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	glEnableVertexAttribArray(pAttribute);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_normal);
+	glBufferData(GL_ARRAY_BUFFER, out_normal.size() * sizeof(glm::vec3), &out_normal[0], GL_STATIC_DRAW);
+	GLint nAttribute = glGetAttribLocation(_shaderID, normalName.c_str());
+	glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	glEnableVertexAttribArray(nAttribute);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_texture);
+	glBufferData(GL_ARRAY_BUFFER, out_uv.size() * sizeof(glm::vec2), &out_uv[0], GL_STATIC_DRAW);
+	GLint tAttribute = glGetAttribLocation(_shaderID, textureName.c_str());
+	glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+	glEnableVertexAttribArray(tAttribute);
+
+
+	model.SetNumTriangle(num_Triangle);
+	model.maxX = maxX;
+	model.minX = minX;
+	model.maxY = maxY;
+	model.minY = minY;
+	model.maxZ = maxZ;
+	model.minZ = minZ;
 
 	return model;
 }

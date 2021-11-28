@@ -54,14 +54,29 @@
     <ClCompile Include="state.cpp">
       <Filter>소스 파일\State</Filter>
     </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
     <ClCompile Include="camera.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
-    <ClCompile Include="Sphere.cpp">
+    <ClCompile Include="mainState.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="startState.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="global_var.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>소스 파일\Model/Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="transform.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="model_maker.h">
       <Filter>헤더 파일\Model/Shader</Filter>
     </ClInclude>
@@ -77,14 +92,37 @@
     <ClInclude Include="state.h">
       <Filter>헤더 파일\State</Filter>
     </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
     <ClInclude Include="camera.h">
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="transform.h">
-      <Filter>헤더 파일\Unit</Filter>
+    <ClInclude Include="startState.h">
+      <Filter>헤더 파일\State</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>헤더 파일\Unit</Filter>
+    <ClInclude Include="mainState.h">
+      <Filter>헤더 파일\State</Filter>
     </ClInclude>
+    <ClInclude Include="global_var.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>헤더 파일\Model/Shader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F1.glsl">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </None>
+    <None Include="V1.glsl">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </None>
+    <None Include="fragment1.glsl">
+      <Filter>소스 파일</Filter>
+    </None>
+    <None Include="vertex1.glsl">
+      <Filter>소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 #include "glManager.h"
 #include "shader.h"
+#include "startState.h"
+
 
 GLManager::GLManager(int winWidth, int winHeight, int argc, char** argv) {
 	width = winWidth;

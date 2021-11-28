@@ -8,6 +8,8 @@
 #include <glm/ext.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "global_var.h"
+
 #include "model_3d.h"
 #include "model_maker.h"
 #include "transform.h"
@@ -18,31 +20,30 @@
 #pragma comment(lib, "glew32.lib")
 #pragma endregion
 
-
-#define winHeight 600
-#define winWidth 600
 using namespace std;
 
-Model3D m3d;
-ModelMaker make;
+//Model3D m3d;
+//ModelMaker make;
+//Shader shader;
+//GLManager* glptr;
 
-Shader shader;
-GLManager* glptr;
-//Camera startState::cam = Camera();
-Camera mainState::cam = Camera();
-std::vector<Transform*> mainState::objlist;
 
 void Initbuffer() {
-	make.LoadObj("sphere.obj");
-	m3d = make.MakeModel3D(shader.rtsh(), "vPos", "nPos");
+	GloVar::modelMaker.ResetTransform();
+	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
+	GloVar::modelMaker.LoadObj("sphere.obj");
+	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader.GetShaderID(), "vPos", "vNormal");
 }
 
 void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설정 { //--- 윈도우 생성하기
 {
-	GLManager gl(winWidth, winHeight, argc, argv);
-	glptr = &gl;
-	shader.InitShader("V1.glsl", "F1.glsl");
+	GLManager gl(GloVar::winWidth, GloVar::winHeight, argc, argv);
+	GloVar::glptr = &gl;
+	GloVar::shader.InitShader("fragment1.glsl", "vertex1.glsl");
+
 	Initbuffer();
+	GloVar::InitGloVar();
+
 	gl.mainLoop();
 }
 

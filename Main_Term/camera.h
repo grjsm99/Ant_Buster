@@ -1,19 +1,19 @@
 #pragma once
-#include "transform.h"
-#include <glew.h>
-class Camera : public Transform {
-
-	glm::vec3 cameraDirection;
-	glm::vec3 cameraUp;
+#include "object.h"
+#include <gl/glew.h>
+class Camera : public Object {
 public:
-	Camera() {
-		SetPos(glm::vec3(0, 5, 0));
-		cameraDirection = glm::vec3(0, 0, 0);
-		cameraUp = glm::vec3(0, 0, 1);
-	}
-	void draw() {};
-	void update() {};
-	glm::vec3 camPos() { return GetPos(); };
-	glm::vec3 camDirec() { return cameraDirection; };
-	glm::vec3 camUp() { return cameraUp; };
+	Camera();
+
+	glm::vec3 Eye();
+	glm::vec3 At();
+	glm::vec3 Up();
+
+	void Move(glm::vec3 value);
+	void MoveFront(float speed);
+	void RotateLeft(float degree);
+	void RotateRight(float degree);
+	void RotateUp(float degree);
+	void RotateDown(float degree);
+
 };

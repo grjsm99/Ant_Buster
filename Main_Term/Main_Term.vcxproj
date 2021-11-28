@@ -142,23 +142,37 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="glManager.cpp" />
+    <ClCompile Include="global_var.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainState.cpp" />
     <ClCompile Include="model_3d.cpp" />
     <ClCompile Include="model_maker.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="shader.cpp" />
-    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="startState.cpp" />
     <ClCompile Include="state.cpp" />
+    <ClCompile Include="texture.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="glManager.h" />
+    <ClInclude Include="global_var.h" />
+    <ClInclude Include="mainState.h" />
     <ClInclude Include="model_3d.h" />
     <ClInclude Include="model_maker.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="shader.h" />
-    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="startState.h" />
     <ClInclude Include="state.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="transform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F1.glsl" />
+    <None Include="fragment1.glsl" />
+    <None Include="V1.glsl" />
+    <None Include="vertex1.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
