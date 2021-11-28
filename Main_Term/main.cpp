@@ -23,10 +23,15 @@
 using namespace std;
 
 void Initbuffer() {
-	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(2,2,2), glm::vec3(0, 0, 0));
+	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(2,2,2), glm::vec3(0, 0, 0));
 	GloVar::modelMaker.LoadObj("plain.obj");
-	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");d
+	GloVar::titleScreen = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
+
+	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
+	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[1].GetShaderID(), "vPos", "vNormal", "tPos");
+
+
+	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");
 }
 
 void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설정 { //--- 윈도우 생성하기

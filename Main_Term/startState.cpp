@@ -14,12 +14,9 @@ GLvoid startState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	glEnable(GL_DEPTH_TEST); // 은면제거용
 
 	glUseProgram(UIShader);
-	glm::mat4 model(1.0f);
-	model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1, 0, 0));
-	unsigned int modelLoca = glGetUniformLocation(UIShader, "modelTransform");
-	glUniformMatrix4fv(modelLoca, 1, GL_FALSE, glm::value_ptr(model));
 
-	GloVar::model_plain.Draw(GloVar::TitleTexture);
+
+	GloVar::titleScreen.Draw(GloVar::TitleTexture);
 
 	glUseProgram(0);
 

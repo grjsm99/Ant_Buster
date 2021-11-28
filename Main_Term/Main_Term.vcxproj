@@ -164,6 +164,7 @@
     <ClInclude Include="model_3d.h" />
     <ClInclude Include="model_maker.h" />
     <ClInclude Include="object.h" />
+    <ClInclude Include="plain.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="startState.h" />
     <ClInclude Include="state.h" />

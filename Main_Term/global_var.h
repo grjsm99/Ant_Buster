@@ -16,6 +16,7 @@ public:
 	static Texture TitleTexture;
 
 	static Model3D model_plain;
+	static Model3D titleScreen;
 	static ModelMaker modelMaker;
 
 	static void InitGloVar();
