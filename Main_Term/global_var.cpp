@@ -1,7 +1,7 @@
 #include "global_var.h"
 
 int GloVar::winHeight = 800;
-int GloVar::winWidth = 600;
+int GloVar::winWidth = 1200;
 
 Shader GloVar::shader;
 

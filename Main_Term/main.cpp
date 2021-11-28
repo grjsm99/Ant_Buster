@@ -22,14 +22,7 @@
 
 using namespace std;
 
-//Model3D m3d;
-//ModelMaker make;
-//Shader shader;
-//GLManager* glptr;
-
-
 void Initbuffer() {
-	GloVar::modelMaker.ResetTransform();
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
 	GloVar::modelMaker.LoadObj("sphere.obj");
 	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader.GetShaderID(), "vPos", "vNormal");
@@ -39,7 +32,7 @@ void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설�
 {
 	GLManager gl(GloVar::winWidth, GloVar::winHeight, argc, argv);
 	GloVar::glptr = &gl;
-	GloVar::shader.InitShader("fragment1.glsl", "vertex1.glsl");
+	GloVar::shader.InitShader("vertex1.glsl", "fragment1.glsl");
 
 	Initbuffer();
 	GloVar::InitGloVar();

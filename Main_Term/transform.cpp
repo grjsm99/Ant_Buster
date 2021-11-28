@@ -51,6 +51,7 @@ void Transform::TurnTarget(glm::vec3 targetPos) {
 void Transform::TurnTargetSlow(glm::vec3 targetPos, float spinSpeed) {
 	glm::vec3 z(0, 0, 1);
 	float theta = glm::degrees(glm::acos(glm::dot(z, dir)));	//사이각
+	//0도와 180도 일경우 오류가 날수 있다. (추후 수정할것)
 	if (theta < spinSpeed) {
 		TurnTarget(targetPos);
 	}

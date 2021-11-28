@@ -72,6 +72,9 @@
     <ClCompile Include="texture.cpp">
       <Filter>소스 파일\Model/Shader</Filter>
     </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="texture.h">
       <Filter>헤더 파일\Model/Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

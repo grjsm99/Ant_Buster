@@ -6,6 +6,7 @@
 #include "model_3d.h"
 #include "model_maker.h"
 #include "glManager.h"
+#include "light.h"
 
 class mainState : public State {
 	//필수 합수들
@@ -18,6 +19,7 @@ class mainState : public State {
 
 	//변수
 	static Camera camera;
+	static Light sun;
 
 public:
 	//생성자

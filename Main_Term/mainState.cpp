@@ -1,6 +1,7 @@
 #include "mainState.h"
 
 Camera mainState::camera;
+Light mainState::sun;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -10,7 +11,7 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 
 	rColor = 0.0;
 	gColor = 0.0;
-	bColor = 1.0;
+	bColor = 0.0;
 	glClearColor(rColor, gColor, bColor, 1.0f); // 바탕색을 지정
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -34,14 +35,13 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 
 	//조명
 	int lightPosLocation = glGetUniformLocation(shaderID, "lightPos"); //--- lightPos 값 전달: (0.0, 0.0, 5.0);
-	glUniform3f(lightPosLocation, 0.0, 0.0, 2.5f);
+	glUniform3f(lightPosLocation, sun.GetTransfromPtr()->GetPos().x, sun.GetTransfromPtr()->GetPos().y, sun.GetTransfromPtr()->GetPos().z);
 	int lightColorLocation = glGetUniformLocation(shaderID, "lightColor"); //--- lightColor 값 전달: (1.0, 1.0, 1.0) 백색
-	glUniform3f(lightColorLocation, 1.0f, 1.0f, 1.0f);
+	glUniform3f(lightColorLocation, sun.GetColor().r, sun.GetColor().g, sun.GetColor().b);
 	int camPosLocation = glGetUniformLocation(shaderID, "viewPos");
 	glUniform3f(camPosLocation, camera.Eye().x, camera.Eye().y, camera.Eye().z);
 
-	unsigned int normalLoca = glGetUniformLocation(shaderID, "normalTransform");
-	unsigned int modelLoca = glGetUniformLocation(shaderID, "modelTransform");
+	
 
 	glutSwapBuffers(); // 화면에 출력하기
 }
