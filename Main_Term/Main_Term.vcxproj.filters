@@ -75,6 +75,9 @@
     <ClCompile Include="light.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="plain.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">

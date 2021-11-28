@@ -149,6 +149,7 @@
     <ClCompile Include="model_3d.cpp" />
     <ClCompile Include="model_maker.cpp" />
     <ClCompile Include="object.cpp" />
+    <ClCompile Include="plain.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="startState.cpp" />
     <ClCompile Include="state.cpp" />
