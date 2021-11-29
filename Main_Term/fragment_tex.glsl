@@ -31,6 +31,6 @@ void main ()
 
 	vec3 result = (ambient + diffuse + specular); //--- 최종 조명 설정된 픽셀 색상: (주변+산란반사+거울반사조명)*텍스처좌표 색상
 	
-	FragColor = vec4(1.0, 1.0, 0.5, 1.0);
+	FragColor = vec4(result, 1.0);
 	FragColor = texture(outTexture, TexCoord) * FragColor;
 } 
