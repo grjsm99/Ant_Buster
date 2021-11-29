@@ -1,8 +1,3 @@
-﻿  glManager.cpp
-  global_var.cpp
-  main.cpp
-C:\Users\수민\source\repos\CG_Term\Main_Term\main.cpp(38,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-  mainState.cpp
-  startState.cpp
-  코드를 생성하고 있습니다...
+﻿  main.cpp
+C:\Users\수민\source\repos\CG_Term\Main_Term\main.cpp(40,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
   Main_Term.vcxproj -> C:\Users\수민\source\repos\CG_Term\Main_Term\Debug\Main_Term.exe

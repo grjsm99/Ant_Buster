@@ -8,6 +8,7 @@ Shader GloVar::shader[3];
 GLManager* GloVar::glptr;
 
 Texture GloVar::TitleTexture;
+Texture GloVar::GroundTexture;
 
 Model3D GloVar::model_plain;
 Model3D GloVar::titleScreen;

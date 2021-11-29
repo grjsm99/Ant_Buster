@@ -3,7 +3,7 @@
 
 class Plain : public Object {
 	Model3D* myModel = &GloVar::model_plain;
-
+	Texture* texture = &GloVar::GroundTexture;
 public:
 	void Draw();
 

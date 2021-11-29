@@ -14,6 +14,7 @@ public:
 	static GLManager* glptr;
 
 	static Texture TitleTexture;
+	static Texture GroundTexture;
 
 	static Model3D model_plain;
 	static Model3D titleScreen;

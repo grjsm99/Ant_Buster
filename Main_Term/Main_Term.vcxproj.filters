@@ -120,7 +120,7 @@
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
     <ClInclude Include="plain.h">
-      <Filter>헤더 파일\Unit</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

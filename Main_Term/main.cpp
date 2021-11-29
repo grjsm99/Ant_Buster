@@ -29,10 +29,11 @@ void Initbuffer() {
 
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
 	GloVar::modelMaker.LoadObj("plain.obj");
-	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[1].GetShaderID(), "vPos", "vNormal");
+	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 
 
 	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");
+	GloVar::GroundTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ground.jpg", "outTexture");
 }
 
 void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설정 { //--- 윈도우 생성하기
@@ -41,6 +42,7 @@ void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설�
 	GloVar::glptr = &gl;
 	GloVar::shader[0].InitShader("vertex2D.glsl", "fragment2D.glsl");
 	GloVar::shader[1].InitShader("vertex1.glsl", "fragment1.glsl");
+	GloVar::shader[2].InitShader("vertex_tex.glsl", "fragment_tex.glsl");
 
 	Initbuffer();
 	GloVar::InitGloVar();
