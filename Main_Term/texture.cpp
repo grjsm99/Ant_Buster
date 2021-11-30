@@ -13,7 +13,7 @@ void Texture::InitTexture(GLuint _shaderID, std::string fileName, std::string sa
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	int widthImage, heightImage, numberOfChannel;
-	unsigned char* data = stbi_load(fileName.c_str(), &widthImage, &heightImage, &numberOfChannel, 0);
+	unsigned char* data = stbi_load(fileName.c_str(), &widthImage, &heightImage, &numberOfChannel, STBI_rgb);
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, widthImage, heightImage, 0, GL_RGB, GL_UNSIGNED_BYTE, data); //---텍스처 이미지 정의
 
 	glUseProgram(_shaderID);

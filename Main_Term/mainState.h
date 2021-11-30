@@ -8,6 +8,7 @@
 #include "glManager.h"
 #include "light.h"
 #include "plain.h"
+#include "ant_nest.h"
 
 class mainState : public State {
 	//필수 합수들
@@ -22,6 +23,7 @@ class mainState : public State {
 	static Camera camera;
 	static Light sun;
 	static Plain plain;
+	static AntNest antNest;
 
 public:
 	//생성자

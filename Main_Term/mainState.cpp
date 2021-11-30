@@ -3,6 +3,7 @@
 Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
+AntNest mainState::antNest;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -46,11 +47,11 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	int camPosLocation = glGetUniformLocation(Texshader, "viewPos");
 	glUniform3f(camPosLocation, camera.Eye().x, camera.Eye().y, camera.Eye().z);
 
-
-
-
 	//바닥 그리기
 	plain.Draw();
+	
+	//개미집 그리기
+	antNest.Draw();
 
 
 

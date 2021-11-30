@@ -78,6 +78,9 @@
     <ClCompile Include="plain.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="ant_nest.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -120,21 +123,30 @@
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
     <ClInclude Include="plain.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="ant_nest.h">
+      <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="F1.glsl">
-      <Filter>소스 파일\Model/Shader</Filter>
-    </None>
-    <None Include="V1.glsl">
-      <Filter>소스 파일\Model/Shader</Filter>
-    </None>
     <None Include="fragment1.glsl">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Model/Shader</Filter>
     </None>
     <None Include="vertex1.glsl">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Model/Shader</Filter>
+    </None>
+    <None Include="vertex_tex.glsl">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </None>
+    <None Include="vertex2D.glsl">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </None>
+    <None Include="fragment_tex.glsl">
+      <Filter>소스 파일\Model/Shader</Filter>
+    </None>
+    <None Include="fragment2D.glsl">
+      <Filter>소스 파일\Model/Shader</Filter>
     </None>
   </ItemGroup>
 </Project>

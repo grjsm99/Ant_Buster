@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ant_nest.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="glManager.cpp" />
     <ClCompile Include="global_var.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ant_nest.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="glManager.h" />
     <ClInclude Include="global_var.h" />
@@ -173,10 +175,12 @@
     <ClInclude Include="transform.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="F1.glsl" />
     <None Include="fragment1.glsl" />
-    <None Include="V1.glsl" />
+    <None Include="fragment2D.glsl" />
+    <None Include="fragment_tex.glsl" />
     <None Include="vertex1.glsl" />
+    <None Include="vertex2D.glsl" />
+    <None Include="vertex_tex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
