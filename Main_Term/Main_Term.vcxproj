@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ant.cpp" />
     <ClCompile Include="ant_nest.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="glManager.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ant.h" />
     <ClInclude Include="ant_nest.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="glManager.h" />

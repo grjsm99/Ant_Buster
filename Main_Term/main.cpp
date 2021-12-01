@@ -22,26 +22,6 @@
 
 using namespace std;
 
-void Initbuffer() {
-	//타이틀 화면
-	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(2,2,2), glm::vec3(0, 0, 0));
-	GloVar::modelMaker.LoadObj("plain.obj");
-	GloVar::titleScreen = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");
-
-	//땅바닥
-	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
-	GloVar::modelMaker.LoadObj("plain.obj");
-	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::GroundTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ground.jpg", "outTexture");
-
-	//개미집
-	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.2, 0));
-	GloVar::modelMaker.LoadObj("antNest.obj");
-	GloVar::model_antNest = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::AntNestTexture.InitTexture(GloVar::shader[2].GetShaderID(), "antNest.png", "outTexture");
-	
-}
 
 void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설정 { //--- 윈도우 생성하기
 {
@@ -50,8 +30,6 @@ void main(int argc, char** argv) //--- 윈도우 출력하고 콜백함수 설�
 	GloVar::shader[0].InitShader("vertex2D.glsl", "fragment2D.glsl");
 	GloVar::shader[1].InitShader("vertex1.glsl", "fragment1.glsl");
 	GloVar::shader[2].InitShader("vertex_tex.glsl", "fragment_tex.glsl");
-
-	Initbuffer();
 	GloVar::InitGloVar();
 
 	gl.mainLoop();

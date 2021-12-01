@@ -16,10 +16,12 @@ public:
 	static Texture TitleTexture;
 	static Texture GroundTexture;
 	static Texture AntNestTexture;
+	static Texture AntTexture;
 
 	static Model3D model_plain;
 	static Model3D titleScreen;
 	static Model3D model_antNest;
+	static Model3D model_ant;
 	static ModelMaker modelMaker;
 
 	static void InitGloVar();

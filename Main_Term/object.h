@@ -2,7 +2,7 @@
 #include "transform.h"
 class Object {
 protected:
-	Transform transfrom;
+	Transform transform;
 public:
-	Transform* GetTransfromPtr() { return &transfrom; };
+	Transform* GetTransfromPtr() { return &transform; };
 };

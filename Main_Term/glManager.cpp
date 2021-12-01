@@ -39,6 +39,7 @@ void GLManager::pushState(State* s) {
 	glutKeyboardFunc(s->Keyboardptr);
 	glutMouseFunc(s->Mouseptr);
 	glutMotionFunc(s->Motionptr);
+	glutTimerFunc(16 ,s->Updateptr, 0);
 }
 
 void GLManager::chstate(State* s) {

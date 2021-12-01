@@ -4,6 +4,7 @@ Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
+std::vector<Ant*> mainState::ants;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -53,7 +54,10 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	//개미집 그리기
 	antNest.Draw();
 
-
+	//개미 그리기
+	for (int i = 0; i < ants.size(); ++i) {
+		ants[i]->Draw();
+	}
 
 	glUseProgram(Colshader);	// 텍스처 없는 객체 그리기
 
@@ -133,7 +137,17 @@ GLvoid mainState::Motion(int x, int y) {
 
 
 
+GLvoid mainState::Update(int value) {
+	//개미집 업데이트
+	antNest.Update();
+	//개미 그리기
+	for (int i = 0; i < ants.size(); ++i) {
+		ants[i]->Update();
+	}
 
+	glutPostRedisplay();
+	glutTimerFunc(16, Update, 0);
+}
 
 void mainState::SetCallbackFunc() {
 	Reshapeptr = mainState::Reshape;
@@ -142,4 +156,5 @@ void mainState::SetCallbackFunc() {
 	Keyboardptr = mainState::Keyboard;
 	Mouseptr = mainState::Mouse;
 	Motionptr = mainState::Motion;
+	Updateptr = mainState::Update;
 }

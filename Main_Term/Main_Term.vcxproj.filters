@@ -81,6 +81,9 @@
     <ClCompile Include="ant_nest.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="ant.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -126,6 +129,9 @@
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
     <ClInclude Include="ant_nest.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="ant.h">
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>

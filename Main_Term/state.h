@@ -13,7 +13,7 @@ public:
 	GLvoid (*Keyboardptr)(unsigned char key, int x, int y);
 	GLvoid (*Mouseptr)(int button, int state, int x, int y);
 	GLvoid (*Motionptr)(int x, int y);
+	GLvoid (*Updateptr)(int value);
 
 	virtual void SetCallbackFunc() = 0;
-
 };

@@ -82,7 +82,9 @@ GLvoid startState::Motion(int x, int y) {
 
 }
 
+GLvoid startState::Update(int value) {
 
+}
 
 void startState::SetCallbackFunc() {
 	Reshapeptr = startState::Reshape;
@@ -91,4 +93,5 @@ void startState::SetCallbackFunc() {
 	Keyboardptr = startState::Keyboard;
 	Mouseptr = startState::Mouse;
 	Motionptr = startState::Motion;
+	Updateptr = startState::Update;
 }

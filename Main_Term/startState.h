@@ -15,6 +15,7 @@ class startState : public State {
 	static GLvoid Keyboard(unsigned char key, int x, int y);
 	static GLvoid Mouse(int button, int state, int x, int y);
 	static GLvoid Motion(int x, int y);
+	static GLvoid Update(int value);
 
 public:
 	//»ý¼ºÀÚ
