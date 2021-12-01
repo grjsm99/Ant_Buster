@@ -155,7 +155,9 @@
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="startState.cpp" />
     <ClCompile Include="state.cpp" />
+    <ClCompile Include="techtree.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="tower.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +175,9 @@
     <ClInclude Include="shader.h" />
     <ClInclude Include="startState.h" />
     <ClInclude Include="state.h" />
+    <ClInclude Include="techtree.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="tower.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>
   <ItemGroup>

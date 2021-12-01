@@ -84,6 +84,12 @@
     <ClCompile Include="ant.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="tower.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="techtree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -133,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="ant.h">
       <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="tower.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="techtree.h">
+      <Filter>헤더 파일\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,9 @@ Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
+
 std::vector<Ant*> mainState::ants;
+std::vector<Tower*> mainState::towers;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -57,6 +59,11 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	//개미 그리기
 	for (int i = 0; i < ants.size(); ++i) {
 		ants[i]->Draw();
+	}
+
+	// 타워 그리기
+	for (int i = 0; i < towers.size(); ++i) {
+		towers[i]->Draw();
 	}
 
 	glUseProgram(Colshader);	// 텍스처 없는 객체 그리기
@@ -140,7 +147,13 @@ GLvoid mainState::Motion(int x, int y) {
 GLvoid mainState::Update(int value) {
 	//개미집 업데이트
 	antNest.Update();
-	//개미 그리기
+
+	// 타워 업데이트
+	for (int i = 0; i < towers.size(); ++i) {
+		towers[i]->Update();
+	}
+
+	// 개미 업데이트
 	for (int i = 0; i < ants.size(); ++i) {
 		ants[i]->Update();
 	}

@@ -11,11 +11,15 @@ Texture GloVar::TitleTexture;
 Texture GloVar::GroundTexture;
 Texture GloVar::AntNestTexture;
 Texture GloVar::AntTexture;
+Texture GloVar::turretTexture;
+
+techtree GloVar::root(&GloVar::model_turret, &GloVar::turretTexture, 6, 5, 10);
 
 Model3D GloVar::titleScreen;
 Model3D GloVar::model_plain;
 Model3D GloVar::model_antNest;
 Model3D GloVar::model_ant;
+Model3D GloVar::model_turret;
 ModelMaker GloVar::modelMaker;
 
 void GloVar::InitGloVar() {
@@ -42,4 +46,8 @@ void GloVar::InitGloVar() {
 	GloVar::model_ant = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::AntTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ant3d.jpg", "outTexture");
 
+	GloVar::modelMaker.SetTransform(glm::vec3(0, -90, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.2, 0));
+	GloVar::modelMaker.LoadObj("turret.obj");
+	GloVar::model_turret = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
+	GloVar::turretTexture.InitTexture(GloVar::shader[2].GetShaderID(), "turretSkin.png", "outTexture");
 }

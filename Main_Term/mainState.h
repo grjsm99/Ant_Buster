@@ -10,10 +10,10 @@
 #include "light.h"
 #include "plain.h"
 #include "ant_nest.h"
-#include "ant.h"
+#include "tower.h"
 
 class mainState : public State {
-	//필수 합수들
+	//필수 함수들
 	static GLvoid Reshape(int w, int h);
 	static GLvoid drawScene();
 	static GLvoid sKeyboard(int key, int x, int y);
@@ -32,10 +32,17 @@ class mainState : public State {
 public:
 	//public 변수
 	static std::vector<Ant*> ants;
+	static std::vector<Tower*> towers;
 
 	//생성자
 	mainState() {
 		SetCallbackFunc();
+		for (int i = 0; i < 10; i++) {
+			for (int j = 2; j < 10; j++) {
+				Tower* t = new Tower(j, i);
+				towers.push_back(t);
+			}
+		}
 	};
 
 	//자신의 함수 연결하기

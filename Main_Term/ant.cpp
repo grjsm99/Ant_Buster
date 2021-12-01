@@ -22,5 +22,5 @@ void Ant::Draw() {
 }
 
 void Ant::Update() {
-	
+	transform.MoveFront(0.01);
 }
