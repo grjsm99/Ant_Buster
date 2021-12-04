@@ -20,12 +20,14 @@ public:
 	static Texture AntNestTexture;
 	static Texture AntTexture;
 	static Texture turretTexture;
+	static Texture missile1Texture;
 
 	static Model3D model_plain;
 	static Model3D titleScreen;
 	static Model3D model_antNest;
 	static Model3D model_ant;
 	static Model3D model_turret;
+	static Model3D model_missile1;
 	
 	// 모델, 텍스처, 사거리, 데미지, 공격속도 설정
 	static techtree root; // 기본 타워

@@ -1,3 +1,4 @@
+#pragma once
 #include "model_3d.h"
 #include "global_var.h"
 
@@ -11,4 +12,5 @@ public:
 
 	void Draw();
 	void Update();
+	void Attacked(float _dmg);
 };

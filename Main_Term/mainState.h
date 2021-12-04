@@ -11,6 +11,7 @@
 #include "plain.h"
 #include "ant_nest.h"
 #include "tower.h"
+#include "attack.h"
 
 class mainState : public State {
 	//필수 함수들
@@ -33,6 +34,7 @@ public:
 	//public 변수
 	static std::vector<Ant*> ants;
 	static std::vector<Tower*> towers;
+	static std::vector<Attack*> attacks;
 
 	//생성자
 	mainState() {

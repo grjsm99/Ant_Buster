@@ -1,4 +1,5 @@
 #include "ant.h"
+#include "mainState.h"
 
 Ant::Ant() {
 	transform.SetPos(glm::vec3(-4, 0, -4));
@@ -23,4 +24,13 @@ void Ant::Draw() {
 
 void Ant::Update() {
 	transform.MoveFront(0.01);
+}
+
+void Ant::Attacked(float _dmg) {
+	hp -= _dmg;
+	if (hp <= 0.0f) {
+		mainState::ants.erase(std::remove(mainState::ants.begin(), mainState::ants.end(), this), mainState::ants.end());
+		delete this;
+		return;
+	}
 }

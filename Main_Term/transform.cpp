@@ -1,4 +1,6 @@
 #include "transform.h"
+#include <algorithm>
+#include <iostream>
 
 Transform::Transform() {
 	pos = glm::vec3(0, 0, 0);
@@ -63,8 +65,8 @@ void Transform::TurnTarget(glm::vec3 targetPos) {
 	dir = glm::normalize(targetPos - pos);
 }
 void Transform::TurnTargetSlow(glm::vec3 targetPos, float spinSpeed) {
-	glm::vec3 z(0, 0, 1);
-	float theta = glm::degrees(glm::acos(glm::dot(z, dir)));	//사이각
+	glm::vec3 targetDir = glm::normalize(targetPos - pos);
+	float theta = glm::degrees(glm::acos( std::min( glm::dot(targetDir, dir), 1.0f ) ));	//사이각
 
 	if (theta < spinSpeed) {	//spinSpeed 각도 안에 타켓을 바라볼수 있을 경우
 		TurnTarget(targetPos);
@@ -72,7 +74,7 @@ void Transform::TurnTargetSlow(glm::vec3 targetPos, float spinSpeed) {
 	else {
 		if (theta < 180) {	//180도가 넘지 않을 경우
 			glm::mat4 rotationMat(1.0f);
-			rotationMat = glm::rotate(rotationMat, glm::radians(theta), glm::cross(glm::vec3(0, 0, 1), dir));	//외적을 기준축으로 theta만큼 회전
+			rotationMat = glm::rotate(rotationMat, glm::radians(spinSpeed), glm::cross(dir, targetDir));	//외적을 기준축으로 theta만큼 회전
 			dir = glm::normalize(glm::vec3(rotationMat * glm::vec4(dir, 1.0f)));
 		}
 		else {	//정 반대 방향일 경우(랜덤값으로 벡터를 살짝 흔들어 준다.)

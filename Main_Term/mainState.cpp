@@ -7,6 +7,7 @@ AntNest mainState::antNest;
 
 std::vector<Ant*> mainState::ants;
 std::vector<Tower*> mainState::towers;
+std::vector<Attack*> mainState::attacks;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -64,6 +65,11 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	// 타워 그리기
 	for (int i = 0; i < towers.size(); ++i) {
 		towers[i]->Draw();
+	}
+
+	// 공격 그리기
+	for (int i = 0; i < attacks.size(); ++i) {
+		attacks[i]->Draw();
 	}
 
 	glUseProgram(Colshader);	// 텍스처 없는 객체 그리기
@@ -156,6 +162,11 @@ GLvoid mainState::Update(int value) {
 	// 개미 업데이트
 	for (int i = 0; i < ants.size(); ++i) {
 		ants[i]->Update();
+	}
+
+	// 공격 업데이트
+	for (int i = 0; i < attacks.size(); ++i) {
+		attacks[i]->Update();
 	}
 
 	glutPostRedisplay();

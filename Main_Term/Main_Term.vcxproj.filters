@@ -31,6 +31,12 @@
     <Filter Include="헤더 파일\Unit">
       <UniqueIdentifier>{baf7df83-1e2a-4b8d-8548-e2f3e82285e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Attack">
+      <UniqueIdentifier>{700a9425-ed88-4b4a-b97e-1642a9e546ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Attack">
+      <UniqueIdentifier>{b3c9df05-b491-48e9-9087-87f8300e2f22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="transform.cpp">
@@ -90,6 +96,12 @@
     <ClCompile Include="techtree.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="missile1.cpp">
+      <Filter>소스 파일\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="attack.cpp">
+      <Filter>소스 파일\Attack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -145,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="techtree.h">
       <Filter>헤더 파일\State</Filter>
+    </ClInclude>
+    <ClInclude Include="attack.h">
+      <Filter>헤더 파일\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="missile1.h">
+      <Filter>헤더 파일\Attack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
