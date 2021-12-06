@@ -1,5 +1,5 @@
 #include "mainState.h"
-
+#include <string.h>
 Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
@@ -8,6 +8,7 @@ AntNest mainState::antNest;
 std::vector<Ant*> mainState::ants;
 std::vector<Tower*> mainState::towers;
 std::vector<Attack*> mainState::attacks;
+glm::vec3 mainState::attLights[200];
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -46,11 +47,20 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	//조명
 	int lightPosLocation = glGetUniformLocation(Texshader, "lightPos"); //--- lightPos 값 전달: (0.0, 0.0, 5.0);
 	glUniform3f(lightPosLocation, sun.GetTransfromPtr()->GetPos().x, sun.GetTransfromPtr()->GetPos().y, sun.GetTransfromPtr()->GetPos().z);
+
+	int lightNum = attacks.size();
+	int attLightsNumLocation = glGetUniformLocation(Texshader, "attLightsNum"); //--- lightPos 값 전달: (0.0, 0.0, 5.0);
+	glUniform1i(attLightsNumLocation, lightNum);
+
+	for (int i = 0; i < lightNum; i++) { // 조명 수만큼 셰이더로 정보 보내줌
+		std::string num = std::to_string(i);
+		glUniform3f(glGetUniformLocation(Texshader, ("attLights[" + num + "]").c_str()), attLights[i].x, attLights[i].y, attLights[i].z);
+	}
 	int lightColorLocation = glGetUniformLocation(Texshader, "lightColor"); //--- lightColor 값 전달: (1.0, 1.0, 1.0) 백색
 	glUniform3f(lightColorLocation, sun.GetColor().r, sun.GetColor().g, sun.GetColor().b);
 	int camPosLocation = glGetUniformLocation(Texshader, "viewPos");
 	glUniform3f(camPosLocation, camera.Eye().x, camera.Eye().y, camera.Eye().z);
-
+	
 	//바닥 그리기
 	plain.Draw();
 	
@@ -114,6 +124,12 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 
 GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
+	case 'n':
+		sun.SetColor(0.2, 0.2, 0.2);
+		break;
+	case 'm':
+		sun.SetColor(1, 1, 1);
+		break;
 	case 'p':
 		glutPostRedisplay();
 		break;
@@ -166,8 +182,13 @@ GLvoid mainState::Update(int value) {
 
 	// 공격 업데이트
 	for (int i = 0; i < attacks.size(); ++i) {
+		if (i == 200) break;
+		attLights[i] = attacks[i]->GetTransfromPtr()->GetPos();
 		attacks[i]->Update();
+
 	}
+
+	
 
 	glutPostRedisplay();
 	glutTimerFunc(16, Update, 0);

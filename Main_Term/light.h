@@ -7,4 +7,5 @@ private:
 public:
 	Light();
 	glm::vec3 GetColor();
+	void SetColor(float r, float g, float b);
 };

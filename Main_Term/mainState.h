@@ -35,16 +35,24 @@ public:
 	static std::vector<Ant*> ants;
 	static std::vector<Tower*> towers;
 	static std::vector<Attack*> attacks;
-
+	static glm::vec3 attLights[200];
 	//생성자
 	mainState() {
 		SetCallbackFunc();
-		for (int i = 0; i < 10; i++) {
+
+		Tower* t = new Tower(5, 5);
+		towers.push_back(t);
+		t = new Tower(5, 6);
+		towers.push_back(t);
+		t = new Tower(5, 7);
+		towers.push_back(t);
+		/*for (int i = 0; i < 10; i++) {
 			for (int j = 2; j < 10; j++) {
 				Tower* t = new Tower(j, i);
 				towers.push_back(t);
 			}
 		}
+		*/
 	};
 
 	//자신의 함수 연결하기

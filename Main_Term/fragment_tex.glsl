@@ -11,16 +11,24 @@ uniform vec3 lightColor; //--- 조명의 색
 uniform vec3 objectColor;
 uniform vec3 viewPos;	//카메라 위치
 uniform sampler2D outTexture;
+uniform vec3 attLights[200];
+uniform int attLightsNum;
 
 void main ()
 {
 	float ambientLight = 0.3; //--- 주변 조명 세기
-	vec3 ambient = ambientLight * lightColor; //--- 주변 조명 값
+	vec3 ambient = ambientLight * vec3(1,1,1); //--- 주변 조명 값
 
 	vec3 normalVector = normalize(Normal);
 	vec3 lightDir = normalize(lightPos - FragPos); //--- 표면과 조명의 위치로 조명의 방향을 결정한다.
 	float diffuseLight = max(dot (normalVector, lightDir), 0.0); //--- N과 L의 내적 값으로 강도 조절: 음수 방지
 	vec3 diffuse = diffuseLight * lightColor; //--- 산란 반사 조명값: 산란반사값 * 조명색상값
+
+	
+	for(int i=0; i<attLightsNum; i++) {	
+		diffuse += max(dot(normalVector, normalize(attLights[i]-FragPos)), 0.0) * vec3(0.1, 0.1, 0.1);
+	}
+
 
 	int shininess = 128/10; //--- 광택 계수
 	vec3 viewDir = normalize(viewPos - FragPos); //--- 관찰자의 방향
