@@ -11,11 +11,12 @@ Texture GloVar::TitleTexture;
 Texture GloVar::GroundTexture;
 Texture GloVar::AntNestTexture;
 Texture GloVar::AntTexture;
-Texture GloVar::turretTexture;
+Texture GloVar::basicturretTexture;
+Texture GloVar::iceturretTexture;
 Texture GloVar::missile1Texture;
 
 
-techtree GloVar::root(&GloVar::model_turret, &GloVar::turretTexture, 6, 5, 10);
+techtree GloVar::root(&GloVar::model_turret, &GloVar::basicturretTexture, 6, 5, 10);
 
 Model3D GloVar::titleScreen;
 Model3D GloVar::model_plain;
@@ -53,7 +54,11 @@ void GloVar::InitGloVar() {
 	GloVar::modelMaker.SetTransform(glm::vec3(0, -90, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.4, 0.15));
 	GloVar::modelMaker.LoadObj("turret.obj");
 	GloVar::model_turret = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::turretTexture.InitTexture(GloVar::shader[2].GetShaderID(), "turretSkin.png", "outTexture");
+	GloVar::basicturretTexture.InitTexture(GloVar::shader[2].GetShaderID(), "turretSkin.png", "outTexture");
+	GloVar::iceturretTexture.InitTexture(GloVar::shader[2].GetShaderID(), "iceturretSkin.png", "outTexture");
+
+	techtree* iceturret = new techtree(&GloVar::model_turret, &GloVar::iceturretTexture, 6, 10, 10);
+	root.setLeft(iceturret);
 
 	//πÃªÁ¿œ1
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 180, 0), glm::vec3(0.5, 0.5, 0.5), glm::vec3(0, 0, 0));

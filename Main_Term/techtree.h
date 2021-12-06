@@ -32,7 +32,15 @@ public:
 		right = NULL;
 	};
 	Status* getData() { return &status; }
+	void setLeft(techtree*);
+	void setRight(techtree*);
+	void setMid(techtree*);
+	void setPrev(techtree*);
 
+	techtree* getLeft() { return left; };
+	techtree* getRight() { return right; };
+	techtree* getMid() { return mid; };
+	techtree* getPrev() { return prev; };
 	void Upgrade(); // 공격력 업그레이드 등..
 	
 };

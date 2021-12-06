@@ -8,6 +8,13 @@ Tower::Tower(int x, int z) { // x,z = 0~9
 	transform.SetPos(glm::vec3(x - 4.5, 0, z - 4.5)); // 타워 중점좌표 = -4.5~4.5
 }
 
+void Tower::Upgrade(int type) {
+	if(type == 1) data = data->getLeft();
+	if(type == 2) data = data->getRight();
+	if(type == 3) data = data->getMid();
+	if(type == 3) data = data->getPrev();
+}
+
 void Tower::Draw() {
 	GLuint shaderID = GloVar::shader[2].GetShaderID();
 

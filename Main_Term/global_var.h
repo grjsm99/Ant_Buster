@@ -19,7 +19,8 @@ public:
 	static Texture GroundTexture;
 	static Texture AntNestTexture;
 	static Texture AntTexture;
-	static Texture turretTexture;
+	static Texture basicturretTexture;
+	static Texture iceturretTexture;
 	static Texture missile1Texture;
 
 	static Model3D model_plain;

@@ -14,7 +14,7 @@ public:
 	void Update();
 	void getNextTarget();
 	void Draw();
-
+	void Upgrade(int);
 	glm::vec3 GetCannonHole();
 };
 

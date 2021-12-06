@@ -45,6 +45,7 @@ public:
 		t = new Tower(5, 6);
 		towers.push_back(t);
 		t = new Tower(5, 7);
+		t->Upgrade(1);
 		towers.push_back(t);
 		/*for (int i = 0; i < 10; i++) {
 			for (int j = 2; j < 10; j++) {
