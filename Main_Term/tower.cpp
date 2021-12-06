@@ -6,6 +6,7 @@ Tower::Tower(int x, int z) { // x,z = 0~9
 	data = &GloVar::root;
 	target = NULL;
 	transform.SetPos(glm::vec3(x - 4.5, 0, z - 4.5)); // 타워 중점좌표 = -4.5~4.5
+	cool = data->getData()->cooldown;
 }
 
 void Tower::Upgrade(int type) {
@@ -43,25 +44,28 @@ void Tower::Update() {
 			target = NULL;
 		}
 		else {
+			cool -= 1;
 			transform.SetDir(glm::normalize(glm::vec3(targetPos.x - towerPos.x, 0, targetPos.z - towerPos.z)));
 			//임시로 확률적으로 공격하도록 함
-			if (rand() % 100 == 0) {
+			if (cool == 0) {
 				Missile1* newMissile1 = new Missile1(GetCannonHole(), transform.GetDir(), target);
 				mainState::attacks.push_back(newMissile1);
 				cannonSwitch = !cannonSwitch;
+				cool = data->getData()->cooldown;
 			}
 		}
 	}
 }
 void Tower::getNextTarget() {
-	float maxDistance = 0;
+	float minDistance = 10;
 	glm::vec3 towerPos = transform.GetPos(); // 타워의 위치
 
 	for (auto it = mainState::ants.begin(); it != mainState::ants.end(); it++) {
 		glm::vec3 antPos = (*it)->GetTransfromPtr()->GetPos(); // 개미의 위치
 		
 		float distance = sqrt(pow(antPos.x - towerPos.x, 2) + pow(antPos.z - towerPos.z, 2));
-		if (distance <= data->getData()->range && distance > maxDistance) { // 사거리내의 가까운적
+		if (distance <= data->getData()->range && distance < minDistance) { // 사거리내의 가까운적
+			minDistance = distance;
 			target = (*it);
 
 		}

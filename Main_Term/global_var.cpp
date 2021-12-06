@@ -8,22 +8,26 @@ Shader GloVar::shader[3];
 GLManager* GloVar::glptr;
 
 Texture GloVar::TitleTexture;
+Texture GloVar::bgTexture;
 Texture GloVar::GroundTexture;
 Texture GloVar::AntNestTexture;
 Texture GloVar::AntTexture;
+Texture GloVar::CakeTexture;
 Texture GloVar::basicturretTexture;
 Texture GloVar::iceturretTexture;
 Texture GloVar::missile1Texture;
+Texture GloVar::MainUITexture;
 
-
-techtree GloVar::root(&GloVar::model_turret, &GloVar::basicturretTexture, 6, 5, 10);
+techtree GloVar::root(&GloVar::model_turret, &GloVar::basicturretTexture, 6, 5, 500);
 
 Model3D GloVar::titleScreen;
 Model3D GloVar::model_plain;
+Model3D GloVar::model_cake;
 Model3D GloVar::model_antNest;
 Model3D GloVar::model_ant;
 Model3D GloVar::model_turret;
 Model3D GloVar::model_missile1;
+
 ModelMaker GloVar::modelMaker;
 
 void GloVar::InitGloVar() {
@@ -31,13 +35,21 @@ void GloVar::InitGloVar() {
 	GloVar::modelMaker.LoadObj("plain.obj");
 	GloVar::titleScreen = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");
+	GloVar::bgTexture.InitTexture(GloVar::shader[0].GetShaderID(), "bg.jpg", "outTexture");
+	GloVar::MainUITexture.InitTexture(GloVar::shader[0].GetShaderID(), "mainui.png", "outTexture");
+
 
 	//땅바닥
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
 	GloVar::modelMaker.LoadObj("plain.obj");
 	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::GroundTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ground.jpg", "outTexture");
+	GloVar::GroundTexture.InitTexture(GloVar::shader[2].GetShaderID(), "gr.jpg", "outTexture");
 
+	// 케이크
+	GloVar::modelMaker.SetTransform(glm::vec3(0, -45, 0), glm::vec3(1,1,1), glm::vec3(0, 0.1, -0.2));
+	GloVar::modelMaker.LoadObj("cake.obj");
+	GloVar::model_cake = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
+	GloVar::CakeTexture.InitTexture(GloVar::shader[2].GetShaderID(), "cake_n.jpg", "outTexture");
 	//개미집
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.1, 0));
 	GloVar::modelMaker.LoadObj("antNest.obj");
@@ -57,7 +69,7 @@ void GloVar::InitGloVar() {
 	GloVar::basicturretTexture.InitTexture(GloVar::shader[2].GetShaderID(), "turretSkin.png", "outTexture");
 	GloVar::iceturretTexture.InitTexture(GloVar::shader[2].GetShaderID(), "iceturretSkin.png", "outTexture");
 
-	techtree* iceturret = new techtree(&GloVar::model_turret, &GloVar::iceturretTexture, 6, 10, 10);
+	techtree* iceturret = new techtree(&GloVar::model_turret, &GloVar::iceturretTexture, 6, 10, 300);
 	root.setLeft(iceturret);
 
 	//미사일1
@@ -66,4 +78,5 @@ void GloVar::InitGloVar() {
 	GloVar::model_missile1 = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::missile1Texture.InitTexture(GloVar::shader[2].GetShaderID(), "missile1_3d.bmp", "outTexture");
 
+	
 }

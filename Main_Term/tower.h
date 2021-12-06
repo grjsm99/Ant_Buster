@@ -8,7 +8,7 @@ class Tower : public Object
 	techtree* data;
 	Ant* target; // 현재 타워가 바라보고있는 개미
 	bool cannonSwitch = false;
-
+	int cool = 0;
 public:
 	Tower(int x, int z);
 	void Update();

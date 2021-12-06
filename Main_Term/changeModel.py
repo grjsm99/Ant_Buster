@@ -1,4 +1,4 @@
-f = open('turret.obj', 'r', encoding='UTF8')
+f = open('cake.obj', 'r', encoding='UTF8')
 newf = open('새파일.obj', 'w')
 
 while True:

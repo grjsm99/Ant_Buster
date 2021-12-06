@@ -16,14 +16,20 @@ public:
 	static GLManager* glptr;
 
 	static Texture TitleTexture;
+	static Texture bgTexture;
 	static Texture GroundTexture;
 	static Texture AntNestTexture;
+	static Texture CakeTexture;
+	static Texture MainUITexture;
+
 	static Texture AntTexture;
+
 	static Texture basicturretTexture;
 	static Texture iceturretTexture;
 	static Texture missile1Texture;
 
 	static Model3D model_plain;
+	static Model3D model_cake;
 	static Model3D titleScreen;
 	static Model3D model_antNest;
 	static Model3D model_ant;

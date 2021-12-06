@@ -72,9 +72,6 @@
     <ClCompile Include="startState.cpp">
       <Filter>소스 파일\State</Filter>
     </ClCompile>
-    <ClCompile Include="global_var.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="texture.cpp">
       <Filter>소스 파일\Model/Shader</Filter>
     </ClCompile>
@@ -93,14 +90,20 @@
     <ClCompile Include="tower.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
-    <ClCompile Include="techtree.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="missile1.cpp">
       <Filter>소스 파일\Attack</Filter>
     </ClCompile>
     <ClCompile Include="attack.cpp">
       <Filter>소스 파일\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="cake.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="techtree.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="global_var.cpp">
+      <Filter>소스 파일\Unit</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="missile1.h">
       <Filter>헤더 파일\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="cake.h">
+      <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

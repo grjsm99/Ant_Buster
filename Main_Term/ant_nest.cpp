@@ -2,7 +2,7 @@
 #include "mainState.h"
 
 AntNest::AntNest() {
-	transform.SetPos(glm::vec3(-4, 0, -4));
+	transform.SetPos(glm::vec3(-4.5, 0, -4.5));
 }
 
 void AntNest::Draw() {
@@ -23,7 +23,9 @@ void AntNest::Draw() {
 }
 
 void AntNest::Update() {
-	if (mainState::ants.size() < 5) {
+	cool--;
+	if (cool <= 0) {
+		cool = cooldown;
 		Ant* newAnt = new Ant();
 		mainState::ants.push_back(newAnt);
 	}

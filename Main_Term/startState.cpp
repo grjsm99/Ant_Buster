@@ -11,13 +11,13 @@ GLvoid startState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	GLuint UIShader = GloVar::shader[0].GetShaderID();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 설정된 색으로 전체를 칠하기
-	glEnable(GL_DEPTH_TEST); // 은면제거용
+	glDisable(GL_DEPTH_TEST); // 은면제거용
 
 	glUseProgram(UIShader);
 
 
 	GloVar::titleScreen.Draw(GloVar::TitleTexture);
-
+	glEnable(GL_DEPTH_TEST); // 은면제거용
 	glUseProgram(0);
 
 	glutSwapBuffers(); // 화면에 출력하기

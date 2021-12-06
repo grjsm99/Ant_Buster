@@ -6,7 +6,7 @@ struct Status {
 	Texture* texture;
 	float range;
 	float damage;
-	float cooldown; // 타워가 가지고 있는 성질들
+	int cooldown; // 타워가 가지고 있는 성질들
 };
 
 class techtree
@@ -24,7 +24,7 @@ public:
 		status.texture = _texture;
 		status.range = _range;
 		status.damage = _damage;
-		status.cooldown = _cooldown;
+		status.cooldown = _cooldown * 60 / (float)1000;
 
 		prev = NULL;
 		left = NULL;

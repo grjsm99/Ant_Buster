@@ -12,6 +12,7 @@
 #include "ant_nest.h"
 #include "tower.h"
 #include "attack.h"
+#include "cake.h"
 
 class mainState : public State {
 	//필수 함수들
@@ -28,17 +29,32 @@ class mainState : public State {
 	static Light sun;
 	static Plain plain;
 	static AntNest antNest;
+	static std::vector<cake*> cakeList;
 	
+
 
 public:
 	//public 변수
+	static int gold;
+
 	static std::vector<Ant*> ants;
 	static std::vector<Tower*> towers;
 	static std::vector<Attack*> attacks;
+
 	static glm::vec3 attLights[200];
 	//생성자
 	mainState() {
 		SetCallbackFunc();
+		glm::vec4 dir = glm::vec4(0, 0, 1, 1);
+		glm::mat4 rot(1.0f);
+
+		rot = glm::rotate(rot, 45.0f / 180.0f * 3.14f, glm::vec3(0, 1, 0));
+		for (int i = 0; i < 8; i++) {
+			cake* c = new cake();
+			c->GetTransfromPtr()->SetDir(glm::vec3(dir.x, dir.y, dir.z));
+			dir = rot * dir;
+			cakeList.push_back(c);
+		}
 
 		Tower* t = new Tower(5, 5);
 		towers.push_back(t);

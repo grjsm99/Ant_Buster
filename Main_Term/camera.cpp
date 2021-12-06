@@ -2,14 +2,15 @@
 
 Camera::Camera() {
 	transform.SetDir(glm::normalize(glm::vec3(0, -1, -2)));
-	transform.SetPos(glm::vec3(0, 5, 10));
+	transform.SetPos(glm::vec3(0, 4, 12));
 }
 
 glm::vec3 Camera::Eye() {
 	return transform.GetPos();
 }
 glm::vec3 Camera::At() {
-	return transform.GetPos() + transform.GetDir();
+	//return transform.GetPos() + transform.GetDir();
+	return glm::vec3(0,0,4);
 }
 glm::vec3 Camera::Up() {
 	return glm::vec3(0, 1, 0);

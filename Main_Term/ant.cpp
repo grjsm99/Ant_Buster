@@ -2,7 +2,8 @@
 #include "mainState.h"
 
 Ant::Ant() {
-	transform.SetPos(glm::vec3(-4, 0, -4));
+	transform.SetPos(glm::vec3(-4.5, 0, -4.5));
+	bounty = 1;
 }
 
 void Ant::Draw() {
@@ -22,8 +23,28 @@ void Ant::Draw() {
 	myModel->Draw(*texture);
 }
 
-void Ant::Update() {
-	transform.MoveFront(0.01);
+bool Ant::Update() {
+	transform.MoveFront(speed);
+	moveDist += speed;
+	glm::vec3 dir = transform.GetDir();
+	glm::vec3 pos = transform.GetPos();
+	if (dir.x != 0) {
+		if (moveDist >= 2) {
+			transform.SetDir(glm::vec3(0, 0, 1 - 2 * isplusz));
+			isplusz = !isplusz;
+			moveDist = 0;
+		}
+		else if (pos.x >= 4.5) {
+			//delete this;
+			return true;
+		}
+	}
+	else if (moveDist >= 9)
+	{ 
+		transform.SetDir(glm::vec3(1, 0, 0));
+		moveDist = 0;
+	}
+	return false;
 }
 
 void Ant::Attacked(float _dmg) {
@@ -31,6 +52,7 @@ void Ant::Attacked(float _dmg) {
 	if (hp <= 0.0f) {
 		mainState::ants.erase(std::remove(mainState::ants.begin(), mainState::ants.end(), this), mainState::ants.end());
 		delete this;
+		mainState::gold += bounty;
 		return;
 	}
 }

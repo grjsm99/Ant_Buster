@@ -4,14 +4,18 @@ Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
+int mainState::gold;
 
 std::vector<Ant*> mainState::ants;
 std::vector<Tower*> mainState::towers;
 std::vector<Attack*> mainState::attacks;
+std::vector<cake*> mainState::cakeList;
+
 glm::vec3 mainState::attLights[200];
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
+	GLuint UIshader = GloVar::shader[0].GetShaderID();
 	GLuint Colshader = GloVar::shader[1].GetShaderID();
 	GLuint Texshader = GloVar::shader[2].GetShaderID();
 
@@ -24,18 +28,33 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 설정된 색으로 전체를 칠하기
+	glDisable(GL_DEPTH_TEST); // 은면제거용
+
+
+	
+	glUseProgram(UIshader);
+
+	glViewport(0, 350, GloVar::winWidth, GloVar::winHeight - 350);	// 배경화면 그리기
+	GloVar::titleScreen.Draw(GloVar::bgTexture);
+
 	glEnable(GL_DEPTH_TEST); // 은면제거용
 
+	glViewport(0, 0, GloVar::winWidth, 350);	// UI 그리기
+	GloVar::titleScreen.Draw(GloVar::MainUITexture);
+	glUseProgram(0);
+
+
+
+	glViewport(0, 0, GloVar::winWidth, GloVar::winHeight);	//이 범위에 그리겠다.
+	glUseProgram(Texshader);	// 텍스처 있는 객체 그리기
+	
 	glm::mat4 projection(1.0f);
-	projection = glm::perspective(glm::radians(45.0f), (float)GloVar::winWidth / (float)GloVar::winHeight, 0.1f, 100.0f);
+	projection = glm::perspective(glm::radians(45.0f), (float)GloVar::winWidth / (float)GloVar::winHeight, 0.1f, 200.0f);
 	glm::mat4 view(1.0f);
 	view = glm::lookAt(camera.Eye(), camera.At(), camera.Up());
 
-	glViewport(0, 0, GloVar::winWidth, GloVar::winHeight);	//이 범위에 그리겠다.
 
-	glUseProgram(Texshader);	// 텍스처 있는 객체 그리기
 	
-
 	//투영 변환	
 	unsigned int projLoca = glGetUniformLocation(Texshader, "projectionTransform");
 	glUniformMatrix4fv(projLoca, 1, GL_FALSE, glm::value_ptr(projection));
@@ -66,6 +85,10 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	
 	//개미집 그리기
 	antNest.Draw();
+
+	for (int i = 0; i < cakeList.size(); ++i) {
+		cakeList[i]->Draw();
+	}
 
 	//개미 그리기
 	for (int i = 0; i < ants.size(); ++i) {
@@ -118,12 +141,38 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 		//POINTFLOAT conXY = convertGLXY(x, y);
 		std::cout << "x = " << x << " y = " << y << std::endl;
 		std::cout << "사각형 클릭!!" << std::endl;
+		float m22 = std::atan(45.0f / 2.0f);
+		float m11 = m22 / ((float)GloVar::winWidth / (float)GloVar::winHeight);
+		
+		glm::vec3 start = camera.Eye();
+		std::cout << "cam x = " << start.x << " y = " << start.y << " z = " << start.z << std::endl;
+		std::cout << "cam x = " << camera.At().x << " y = " << camera.At().y << " z = " << camera.At().z << std::endl;
+		glm::vec4 ray(((2.0f * (float)x / (float)GloVar::winWidth) - 1.0f) / m11, ((-2.0f * (float)y / (float)GloVar::winHeight) + 1.0f) / m22, -1.0f, 0);
+		glm::mat4 viewInverse(1.0f);
+		viewInverse = glm::transpose(glm::lookAt(camera.Eye(), camera.At(), camera.Up()));
+
+		ray = viewInverse * ray;
+		std::cout << "ray x = " << ray.x << " y = " << ray.y << " z = " << ray.z << std::endl;
+		float t = (0.0f-start.y) / ray.y;
+		float rx = start.x + t * ray.x;
+		float rz = start.z + t * ray.z;
+		rx = rx;
+		rz = rz;
+		std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
+		std::cout << "사각형 클릭!!" << std::endl;
+
 	}
 }
 
+GLvoid mainState::Motion(int x, int y) {
+	//POINTFLOAT conXY = convertGLXY(x, y);
+}
 
 GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
+	case 'y':
+		cakeList.pop_back();
+		break;
 	case 'n':
 		sun.SetColor(0.2, 0.2, 0.2);
 		break;
@@ -160,10 +209,6 @@ GLvoid mainState::sKeyboard(int key, int x, int y) {
 	}
 }
 
-GLvoid mainState::Motion(int x, int y) {
-
-}
-
 
 
 GLvoid mainState::Update(int value) {
@@ -175,18 +220,20 @@ GLvoid mainState::Update(int value) {
 		towers[i]->Update();
 	}
 
-	// 개미 업데이트
-	for (int i = 0; i < ants.size(); ++i) {
-		ants[i]->Update();
-	}
-
 	// 공격 업데이트
 	for (int i = 0; i < attacks.size(); ++i) {
 		if (i == 200) break;
 		attLights[i] = attacks[i]->GetTransfromPtr()->GetPos();
 		attacks[i]->Update();
-
 	}
+
+	// 개미 업데이트
+	for (int i = 0; i < ants.size(); ++i) {
+		if (ants[i]->Update()) {
+			if (cakeList.size() > 0) cakeList.pop_back();
+		}
+	}
+
 
 	
 
