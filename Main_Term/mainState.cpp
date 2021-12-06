@@ -138,34 +138,36 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		//POINTFLOAT conXY = convertGLXY(x, y);
-		std::cout << "x = " << x << " y = " << y << std::endl;
-		std::cout << "사각형 클릭!!" << std::endl;
+		//std::cout << "x = " << x << " y = " << y << std::endl;
+	//std::cout << "사각형 클릭!!" << std::endl;
 		float m22 = std::atan(45.0f / 2.0f);
 		float m11 = m22 / ((float)GloVar::winWidth / (float)GloVar::winHeight);
-		
+
 		glm::vec3 start = camera.Eye();
-		std::cout << "cam x = " << start.x << " y = " << start.y << " z = " << start.z << std::endl;
-		std::cout << "cam x = " << camera.At().x << " y = " << camera.At().y << " z = " << camera.At().z << std::endl;
-		glm::vec4 ray(((2.0f * (float)x / (float)GloVar::winWidth) - 1.0f) / m11, ((-2.0f * (float)y / (float)GloVar::winHeight) + 1.0f) / m22, -1.0f, 0);
+		//std::cout << "cam x = " << start.x << " y = " << start.y << " z = " << start.z << std::endl;
+		//std::cout << "cam x = " << camera.At().x << " y = " << camera.At().y << " z = " << camera.At().z << std::endl;
+		glm::vec4 ray(((2.0f * (float)x / (float)GloVar::winWidth) - 1.0f) / m11, ((-2.0f * (float)(y + 177) / (float)GloVar::winHeight) + 1.0f) / m22, -1.0f, 0);
 		glm::mat4 viewInverse(1.0f);
 		viewInverse = glm::transpose(glm::lookAt(camera.Eye(), camera.At(), camera.Up()));
 
 		ray = viewInverse * ray;
-		std::cout << "ray x = " << ray.x << " y = " << ray.y << " z = " << ray.z << std::endl;
-		float t = (0.0f-start.y) / ray.y;
+		//std::cout << "ray x = " << ray.x << " y = " << ray.y << " z = " << ray.z << std::endl;
+		float t = (0.0f - start.y) / ray.y;
 		float rx = start.x + t * ray.x;
-		float rz = start.z + t * ray.z;
+		float rz = start.z + t * ray.z - 5.0f;
 		rx = rx;
-		rz = rz;
-		std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
-		std::cout << "사각형 클릭!!" << std::endl;
+		rz = rz * 10.0f / 6.2f;
+		//std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
+		//std::cout << "사각형 클릭!!" << std::endl;
+		std::cout << (int)(rx + 5) << ", " << (int)(rz + 5) << std::endl;
 
 	}
 }
 
 GLvoid mainState::Motion(int x, int y) {
 	//POINTFLOAT conXY = convertGLXY(x, y);
+	
+
 }
 
 GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
