@@ -2,7 +2,8 @@
 #include "mainState.h"
 
 Tower::Tower(int x, int z) { // x,z = 0~9
-
+	tx = x;
+	tz = z;
 	data = &GloVar::root;
 	target = NULL;
 	transform.SetPos(glm::vec3(x - 4.5, 0, z - 4.5)); // 타워 중점좌표 = -4.5~4.5

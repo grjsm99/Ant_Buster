@@ -4,8 +4,10 @@ Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
-int mainState::gold;
+int mainState::gold = 103;
 selectedUI mainState::selected;
+numUI mainState::numui;
+char mainState::groundIndex[10][10]{0,}; // 0 = 건설불가, 1 = 건설가능 2 = 타워 존재 
 
 std::vector<Ant*> mainState::ants;
 std::vector<Tower*> mainState::towers;
@@ -41,6 +43,17 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	glEnable(GL_DEPTH_TEST); // 은면제거용
 
 	glViewport(0, 0, GloVar::winWidth, 350);	// UI 그리기
+	
+	int money = gold;
+	int digit = 0;
+	while (1) {
+
+		numui.Draw(money % 10, digit);
+		if (money / 10 == 0) break;
+		money = money / 10;
+		digit++;
+
+	}
 	GloVar::titleScreen.Draw(GloVar::MainUITexture);
 	glUseProgram(0);
 
@@ -164,8 +177,9 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 		rx = (int)(rx + 5);
 		rz = (int)(rz + 5);
 		std::cout << (int)(rx + 5) << ", " << (int)(rz + 5) << std::endl;
+
 		if (rx >= 0 && rx <= 9 && rz >= 0 && rz <= 9) {
-			selected.click(rx, rz);
+			if(groundIndex[(int)rz][(int)rx] != 0) selected.click(rx, rz);
 		}
 	}
 }
@@ -178,6 +192,15 @@ GLvoid mainState::Motion(int x, int y) {
 
 GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
+	case 't':
+		glm::vec2 selectIndex = selected.getIndex();
+		if (groundIndex[(int)selectIndex.y][(int)selectIndex.x] == 1 && gold >= 10) {
+			groundIndex[(int)selectIndex.y][(int)selectIndex.x] = 2;
+			Tower* t = new Tower(selectIndex.x, selectIndex.y);
+			towers.push_back(t);
+			gold -= 10;
+		}
+		break;
 	case 'y':
 		cakeList.pop_back();
 		break;

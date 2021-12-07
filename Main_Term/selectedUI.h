@@ -10,8 +10,8 @@ class selectedUI : public Object
 	int cx;
 	int cz;
 public:
-
 	void click(int, int);
+	glm::vec2 getIndex();
 	void Draw();
 
 };

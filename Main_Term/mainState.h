@@ -14,7 +14,7 @@
 #include "attack.h"
 #include "cake.h"
 #include "selectedUI.h"
-
+#include "numUI.h"
 class mainState : public State {
 	//필수 함수들
 	static GLvoid Reshape(int w, int h);
@@ -31,13 +31,14 @@ class mainState : public State {
 	static Plain plain;
 	static AntNest antNest;
 	static std::vector<cake*> cakeList;
-	
+	static numUI numui;
 
 
 public:
 	//public 변수
 	static int gold;
 	static selectedUI selected;
+	static char groundIndex[10][10]; // 0 = 건설불가, 1 = 건설가능 2 = 타워 존재 
 
 	static std::vector<Ant*> ants;
 	static std::vector<Tower*> towers;
@@ -58,13 +59,11 @@ public:
 			cakeList.push_back(c);
 		}
 
-		Tower* t = new Tower(5, 5);
-		towers.push_back(t);
-		t = new Tower(5, 6);
-		towers.push_back(t);
-		t = new Tower(5, 7);
-		t->Upgrade(1);
-		towers.push_back(t);
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 9; j++) {
+				groundIndex[j + i % 2][1 + i * 2] = 1;
+			}
+		}
 		/*for (int i = 0; i < 10; i++) {
 			for (int j = 2; j < 10; j++) {
 				Tower* t = new Tower(j, i);

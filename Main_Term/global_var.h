@@ -22,6 +22,7 @@ public:
 	static Texture CakeTexture;
 	static Texture MainUITexture;
 	static Texture selectedTexture;
+	static Texture numTexture[10];
 
 	static Texture AntTexture;
 
@@ -37,6 +38,7 @@ public:
 	static Model3D model_turret;
 	static Model3D model_missile1;
 	static Model3D model_selected;
+	static Model3D model_numui[3];
 	
 	// 모델, 텍스처, 사거리, 데미지, 공격속도 설정
 	static techtree root; // 기본 타워

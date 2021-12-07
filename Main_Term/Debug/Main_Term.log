@@ -1,3 +1,40 @@
-﻿  selectedUI.cpp
+﻿  ant.cpp
 C:\Users\수민\source\repos\CG_Term\Main_Term\techtree.h(27,36): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ant_nest.cpp
+C:\Users\수민\source\repos\CG_Term\Main_Term\techtree.h(27,36): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  glManager.cpp
+C:\Users\수민\source\repos\CG_Term\Main_Term\techtree.h(27,36): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  mainState.cpp
+C:\Users\수민\source\repos\CG_Term\Main_Term\techtree.h(27,36): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(103,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(108,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(113,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(118,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(177,17): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(178,17): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(182,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(182,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(199,51): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(199,36): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(208,29): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(250,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(255,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\mainState.cpp(262,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  missile1.cpp
+C:\Users\수민\source\repos\CG_Term\Main_Term\techtree.h(27,36): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  startState.cpp
+C:\Users\수민\source\repos\CG_Term\Main_Term\techtree.h(27,36): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  tower.cpp
+C:\Users\수민\source\repos\CG_Term\Main_Term\techtree.h(27,36): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\tower.cpp(43,18): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\수민\source\repos\CG_Term\Main_Term\tower.cpp(67,18): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
   Main_Term.vcxproj -> C:\Users\수민\source\repos\CG_Term\Main_Term\Debug\Main_Term.exe

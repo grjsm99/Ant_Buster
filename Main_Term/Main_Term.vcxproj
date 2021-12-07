@@ -153,6 +153,7 @@
     <ClCompile Include="missile1.cpp" />
     <ClCompile Include="model_3d.cpp" />
     <ClCompile Include="model_maker.cpp" />
+    <ClCompile Include="numUI.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="plain.cpp" />
     <ClCompile Include="selectedUI.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="missile1.h" />
     <ClInclude Include="model_3d.h" />
     <ClInclude Include="model_maker.h" />
+    <ClInclude Include="numUI.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="plain.h" />
     <ClInclude Include="selectedUI.h" />

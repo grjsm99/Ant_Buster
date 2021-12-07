@@ -51,8 +51,8 @@ void Ant::Attacked(float _dmg) {
 	hp -= _dmg;
 	if (hp <= 0.0f) {
 		mainState::ants.erase(std::remove(mainState::ants.begin(), mainState::ants.end(), this), mainState::ants.end());
-		delete this;
 		mainState::gold += bounty;
+		delete this;
 		return;
 	}
 }

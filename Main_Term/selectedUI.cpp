@@ -9,6 +9,10 @@ void selectedUI::click(int x, int z) {
 		select = true;
 	}
 }
+glm::vec2 selectedUI::getIndex() {
+	if (select) return glm::vec2(cx, cz);
+	else return glm::vec2(-1, -1);
+}
 
 void selectedUI::Draw() {
 	if (select) {

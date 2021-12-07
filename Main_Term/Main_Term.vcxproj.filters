@@ -108,6 +108,9 @@
     <ClCompile Include="selectedUI.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="numUI.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -174,6 +177,9 @@
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
     <ClInclude Include="selectedUI.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="numUI.h">
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>
