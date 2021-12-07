@@ -9,6 +9,8 @@ protected:
 	Ant* target;
 public:
 
+	void SetTarget(Ant* _target);
+
 	virtual void Draw() = 0;
 	virtual void Update() = 0;
 };

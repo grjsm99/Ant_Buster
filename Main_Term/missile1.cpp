@@ -13,7 +13,18 @@ Missile1::Missile1(glm::vec3 _pos, glm::vec3 _dir, Ant* _target) {
 	dmg = 10.0f;
 	speed = 0.005f;
 	spinSpeed = 5.0f;
+	lifeTime = 3.0f;
 	target = _target;
+	if (target != 0) {
+		target->AddPursuer(this);
+	}
+}
+
+Missile1::~Missile1() {
+	mainState::attacks.erase(std::remove(mainState::attacks.begin(), mainState::attacks.end(), this), mainState::attacks.end());
+	if (target != 0) {
+		target->PopPursuer(this);
+	}
 }
 
 void Missile1::Draw() {
@@ -34,26 +45,29 @@ void Missile1::Draw() {
 }
 
 void Missile1::Update() {
+
+
 	transform.MoveFront(speed);
 	if (speed <= 0.2f) {
 		speed *= 1.1f;
 	}
 
-	if (std::find(mainState::ants.begin(), mainState::ants.end(), target) != mainState::ants.end()) {
+	if (target != 0) {	//타겟이 있을경우
 		glm::vec3 targetPos = target->GetTransfromPtr()->GetPos();
 		transform.TurnTargetSlow(targetPos, spinSpeed);
 		if (glm::distance(transform.GetPos(), targetPos) <= 0.5f) {
 			//데미지 주면서 삭제됨
 			target->Attacked(dmg);
-			mainState::attacks.erase(std::remove(mainState::attacks.begin(), mainState::attacks.end(), this), mainState::attacks.end());
 			delete this;
 			return;
 		}
 	}
-	else {
-		mainState::attacks.erase(std::remove(mainState::attacks.begin(), mainState::attacks.end(), this), mainState::attacks.end());
-		delete this;
-		return;
+	else {	//타겟이 없을경우
+		lifeTime -= 1 / 60.f;
+		if (lifeTime <= 0) {
+			delete this;
+			return;
+		}
 	}
 }
 

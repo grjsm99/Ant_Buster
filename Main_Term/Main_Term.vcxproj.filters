@@ -102,14 +102,14 @@
     <ClCompile Include="techtree.cpp">
       <Filter>소스 파일\State</Filter>
     </ClCompile>
-    <ClCompile Include="global_var.cpp">
-      <Filter>소스 파일\Unit</Filter>
-    </ClCompile>
     <ClCompile Include="selectedUI.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
     <ClCompile Include="numUI.cpp">
       <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="global_var.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

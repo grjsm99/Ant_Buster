@@ -6,6 +6,14 @@ Ant::Ant() {
 	bounty = 1;
 }
 
+Ant::~Ant() {
+	mainState::ants.erase(std::remove(mainState::ants.begin(), mainState::ants.end(), this), mainState::ants.end());
+	for (int i = 0; i < pursuers.size(); ++i) {
+		pursuers[i]->SetTarget(0);
+	}
+	pursuers.shrink_to_fit();
+}
+
 void Ant::Draw() {
 	GLuint shaderID = GloVar::shader[2].GetShaderID();
 
@@ -50,9 +58,21 @@ bool Ant::Update() {
 void Ant::Attacked(float _dmg) {
 	hp -= _dmg;
 	if (hp <= 0.0f) {
-		mainState::ants.erase(std::remove(mainState::ants.begin(), mainState::ants.end(), this), mainState::ants.end());
 		mainState::gold += bounty;
 		delete this;
 		return;
+	}
+}
+
+void Ant::AddPursuer(Attack* _attack) {
+	pursuers.push_back(_attack);
+}
+
+void Ant::PopPursuer(Attack* _attack) {
+	for (int i = 0; i < pursuers.size(); ++i) {
+		if (pursuers[i] == _attack) {
+			pursuers.erase(pursuers.begin() + i);
+			return;
+		}
 	}
 }
