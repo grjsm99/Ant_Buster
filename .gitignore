@@ -1,4 +1,5 @@
-ObjTest/ObjTestProject/.vs
-
-Main_Term/*.vs
+*.pdb
+ObjTest
 Main_Term/*Debug
+Main_Term/*.vs
+
