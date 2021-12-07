@@ -61,7 +61,6 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 
 	glViewport(0, 0, GloVar::winWidth, GloVar::winHeight);	//이 범위에 그리겠다.
 	glUseProgram(Texshader);	// 텍스처 있는 객체 그리기
-	
 	glm::mat4 projection(1.0f);
 	projection = glm::perspective(glm::radians(45.0f), (float)GloVar::winWidth / (float)GloVar::winHeight, 0.1f, 200.0f);
 	glm::mat4 view(1.0f);
@@ -155,13 +154,13 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 	{
 		//std::cout << "x = " << x << " y = " << y << std::endl;
 	//std::cout << "사각형 클릭!!" << std::endl;
-		float m22 = std::atan(45.0f / 2.0f);
+		float m22 = 1.0f / std::tan(glm::radians(45.0f/ 2.0f));
 		float m11 = m22 / ((float)GloVar::winWidth / (float)GloVar::winHeight);
 
 		glm::vec3 start = camera.Eye();
 		//std::cout << "cam x = " << start.x << " y = " << start.y << " z = " << start.z << std::endl;
 		//std::cout << "cam x = " << camera.At().x << " y = " << camera.At().y << " z = " << camera.At().z << std::endl;
-		glm::vec4 ray(((2.0f * (float)x / (float)GloVar::winWidth) - 1.0f) / m11, ((-2.0f * (float)(y + 177) / (float)GloVar::winHeight) + 1.0f) / m22, -1.0f, 0);
+		glm::vec4 ray(((2.0f * (float)x / (float)GloVar::winWidth) - 1.0f) / m11, ((-2.0f * (float)y/ (float)GloVar::winHeight) + 1.0f) / m22, -1.0f, 0);
 		glm::mat4 viewInverse(1.0f);
 		viewInverse = glm::transpose(glm::lookAt(camera.Eye(), camera.At(), camera.Up()));
 
@@ -169,14 +168,14 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 		//std::cout << "ray x = " << ray.x << " y = " << ray.y << " z = " << ray.z << std::endl;
 		float t = (0.0f - start.y) / ray.y;
 		float rx = start.x + t * ray.x;
-		float rz = start.z + t * ray.z - 5.0f;
+		float rz = start.z + t * ray.z;
 		rx = rx;
-		rz = rz * 10.0f / 6.2f;
-		//std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
-		//std::cout << "사각형 클릭!!" << std::endl;
+		rz = rz;
+		std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
+		std::cout << "사각형 클릭!!" << std::endl;
 		rx = (int)(rx + 5);
 		rz = (int)(rz + 5);
-		std::cout << (int)(rx + 5) << ", " << (int)(rz + 5) << std::endl;
+		//std::cout << (int)(rx + 5) << ", " << (int)(rz + 5) << std::endl;
 
 		if (rx >= 0 && rx <= 9 && rz >= 0 && rz <= 9) {
 			if(groundIndex[(int)rz][(int)rx] != 0) selected.click(rx, rz);

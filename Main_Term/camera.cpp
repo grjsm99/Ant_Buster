@@ -9,8 +9,8 @@ glm::vec3 Camera::Eye() {
 	return transform.GetPos();
 }
 glm::vec3 Camera::At() {
-	//return transform.GetPos() + transform.GetDir();
-	return glm::vec3(0,0,4);
+	return transform.GetPos() + transform.GetDir();
+	//return glm::vec3(0,0,4);
 }
 glm::vec3 Camera::Up() {
 	return glm::vec3(0, 1, 0);
