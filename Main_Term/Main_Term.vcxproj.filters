@@ -105,6 +105,9 @@
     <ClCompile Include="global_var.cpp">
       <Filter>소스 파일\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="selectedUI.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -168,6 +171,9 @@
       <Filter>헤더 파일\Attack</Filter>
     </ClInclude>
     <ClInclude Include="cake.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="selectedUI.h">
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>

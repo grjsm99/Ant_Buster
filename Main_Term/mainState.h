@@ -13,6 +13,7 @@
 #include "tower.h"
 #include "attack.h"
 #include "cake.h"
+#include "selectedUI.h"
 
 class mainState : public State {
 	//필수 함수들
@@ -36,6 +37,7 @@ class mainState : public State {
 public:
 	//public 변수
 	static int gold;
+	static selectedUI selected;
 
 	static std::vector<Ant*> ants;
 	static std::vector<Tower*> towers;

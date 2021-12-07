@@ -155,6 +155,7 @@
     <ClCompile Include="model_maker.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="plain.cpp" />
+    <ClCompile Include="selectedUI.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="startState.cpp" />
     <ClCompile Include="state.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="model_maker.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="plain.h" />
+    <ClInclude Include="selectedUI.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="startState.h" />
     <ClInclude Include="state.h" />

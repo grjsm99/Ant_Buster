@@ -5,6 +5,7 @@ Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
 int mainState::gold;
+selectedUI mainState::selected;
 
 std::vector<Ant*> mainState::ants;
 std::vector<Tower*> mainState::towers;
@@ -105,6 +106,7 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 		attacks[i]->Draw();
 	}
 
+	selected.Draw();
 	glUseProgram(Colshader);	// 텍스처 없는 객체 그리기
 
 		//투영 변환	
@@ -159,8 +161,12 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 		rz = rz * 10.0f / 6.2f;
 		//std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
 		//std::cout << "사각형 클릭!!" << std::endl;
+		rx = (int)(rx + 5);
+		rz = (int)(rz + 5);
 		std::cout << (int)(rx + 5) << ", " << (int)(rz + 5) << std::endl;
-
+		if (rx >= 0 && rx <= 9 && rz >= 0 && rz <= 9) {
+			selected.click(rx, rz);
+		}
 	}
 }
 

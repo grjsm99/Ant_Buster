@@ -17,6 +17,7 @@ Texture GloVar::basicturretTexture;
 Texture GloVar::iceturretTexture;
 Texture GloVar::missile1Texture;
 Texture GloVar::MainUITexture;
+Texture GloVar::selectedTexture;
 
 techtree GloVar::root(&GloVar::model_turret, &GloVar::basicturretTexture, 6, 5, 500);
 
@@ -27,6 +28,7 @@ Model3D GloVar::model_antNest;
 Model3D GloVar::model_ant;
 Model3D GloVar::model_turret;
 Model3D GloVar::model_missile1;
+Model3D GloVar::model_selected;
 
 ModelMaker GloVar::modelMaker;
 
@@ -39,11 +41,18 @@ void GloVar::InitGloVar() {
 	GloVar::MainUITexture.InitTexture(GloVar::shader[0].GetShaderID(), "mainui.png", "outTexture");
 
 
+
 	//∂•πŸ¥⁄
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
 	GloVar::modelMaker.LoadObj("plain.obj");
 	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::GroundTexture.InitTexture(GloVar::shader[2].GetShaderID(), "gr.jpg", "outTexture");
+
+	// º±≈√ «•Ω√
+	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0));
+	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::model_selected = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
+	GloVar::selectedTexture.InitTexture(GloVar::shader[2].GetShaderID(), "selected.jpg", "outTexture");
 
 	// ƒ…¿Ã≈©
 	GloVar::modelMaker.SetTransform(glm::vec3(0, -45, 0), glm::vec3(1,1,1), glm::vec3(0, 0.1, -0.2));
