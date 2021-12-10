@@ -49,11 +49,21 @@ void Tower::Update() {
 			transform.TurnTargetSlow(target->GetTransfromPtr()->GetPos(), 3);
 			//임시로 확률적으로 공격하도록 함
 			if (cool == 0) {
-				//Missile1* newMissile1 = new Missile1(GetCannonHole(), transform.GetDir(), target, data->getData()->damage);
-				Missile2* newMissile1 = new Missile2(GetCannonHole(), transform.GetDir(), target, data->getData()->damage);
-				mainState::attacks.push_back(newMissile1);
+				Status* towerdata = data->getData();
+				if (towerdata->firetype == 1) {
+					Missile1* newMissile = new Missile1(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
+					mainState::attacks.push_back(newMissile);
+				}
+				if (towerdata->firetype == 2) {
+					Missile2* newMissile = new Missile2(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
+					mainState::attacks.push_back(newMissile);
+				}
+				else {
+					Missile1* newMissile = new Missile1(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
+					mainState::attacks.push_back(newMissile);
+				}
 				cannonSwitch = !cannonSwitch;
-				cool = data->getData()->cooldown;
+				cool = towerdata->cooldown;
 			}
 		}
 	}
@@ -74,13 +84,28 @@ void Tower::getNextTarget() {
 	}
 }
 
-glm::vec3 Tower::GetCannonHole() {
-	glm::vec3 cannonHolePos(0, 0.4f, 0.4f);	//포구의 높이로 생성
-	if (cannonSwitch) {	//왼쪽 포구로 발사
-		cannonHolePos.x = 0.1f;
+glm::vec3 Tower::GetCannonHole(Status* _data) {
+	glm::vec3 cannonHolePos;	//포구의 높이로 생성
+	if (_data->modeltype == 1) {
+		cannonHolePos = glm::vec3(0, 0.55f, 0.1f);
 	}
-	else {	//오른쪽 포구로 발사
-		cannonHolePos.x = -0.1f;
+	if (_data->modeltype == 2) {
+		cannonHolePos = glm::vec3(0, 0.4f, 0.4f);
+		if (cannonSwitch) {	//왼쪽 포구로 발사
+			cannonHolePos.x = 0.1f;
+		}
+		else {	//오른쪽 포구로 발사
+			cannonHolePos.x = -0.1f;
+		}
+	}
+	if (_data->modeltype == 3) {
+		cannonHolePos = glm::vec3(0, 0.5f, 0.0f);
+		if (cannonSwitch) {	//왼쪽 포구로 발사
+			cannonHolePos.x = 0.1f;
+		}
+		else {	//오른쪽 포구로 발사
+			cannonHolePos.x = -0.1f;
+		}
 	}
 	//회전
 	cannonHolePos = glm::rotate(glm::mat4(1.0f), atan2(transform.GetDir().x, transform.GetDir().z), glm::vec3(0, 1, 0)) * glm::vec4(cannonHolePos, 1.0f);

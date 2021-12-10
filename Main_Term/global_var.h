@@ -23,7 +23,8 @@ public:
 	static Texture MainUITexture;
 	static Texture selectedTexture;
 	static Texture numTexture[10];
-	static Texture tInfoTexture[10];
+	static Texture tInfoTexture[20];
+	static Texture turretTexture[20];
 
 	static Texture AntTexture;
 

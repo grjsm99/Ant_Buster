@@ -8,7 +8,8 @@ struct Status {
 	float damage;
 	int cost;
 	int cooldown; // 타워가 가지고 있는 성질들
-
+	int firetype;
+	int modeltype;
 };
 
 class techtree
@@ -23,13 +24,15 @@ class techtree
 	Texture* infoTexture;
 
 public:
-	techtree(Model3D* _myModel, Texture* _texture, float _range, float _damage, float _cooldown, int _cost, Texture& _infotexture, int _firerate) {
+	techtree(Model3D* _myModel, Texture* _texture, float _range, float _damage, float _cooldown, int _cost, Texture& _infotexture, int _firetype, int _modeltype) {
 		status.myModel = _myModel;
 		status.texture = _texture;
 		status.range = _range;
 		status.damage = _damage;
 		status.cooldown = _cooldown * 60 / (float)1000;
 		status.cost = _cost;
+		status.firetype = _firetype;
+		status.modeltype = _modeltype;
 		infoTexture = &_infotexture;
 
 		prev = NULL;

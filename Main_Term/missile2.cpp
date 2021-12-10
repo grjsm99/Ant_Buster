@@ -8,11 +8,12 @@ Missile2::Missile2(glm::vec3 _pos, glm::vec3 _dir, Ant* _target, float _dmg) {
 	texture = &GloVar::missile2Texture;
 
 	transform.SetPos(_pos);
-	transform.SetDir(_dir);
+
+	transform.SetDir(glm::vec3(_dir.x, (_dir.y+1)/2, _dir.z));
 
 	dmg = _dmg;
-	speed = 0.008f;
-	spinSpeed = 4.0f;
+	speed = 0.01f;
+	spinSpeed = 10.0f;
 	lifeTime = 8.0f;
 	target = _target;
 	if (target != 0) {
@@ -56,7 +57,7 @@ void Missile2::Update() {
 		speed *= 1.1f;
 	}
 
-	if (lifeTime < 6.5f) {
+	if (lifeTime < 7.2f) {
 		if (target != 0) {	//타겟이 있을경우
 			glm::vec3 targetPos = target->GetTransfromPtr()->GetPos();
 			transform.TurnTargetSlow(targetPos, spinSpeed);

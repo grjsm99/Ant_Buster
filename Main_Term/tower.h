@@ -23,6 +23,6 @@ public:
 	void Upgrade(int);
 	techtree* getTechTree() { return data; };
 	glm::vec2 towerIndex() { return glm::vec2(tx, tz); };
-	glm::vec3 GetCannonHole();
+	glm::vec3 GetCannonHole(Status*);
 };
 
