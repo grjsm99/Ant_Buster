@@ -212,6 +212,7 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
 	case '1':
 	{
+		if (!isselect) break;
 		techtree* left = selecttower->getTechTree()->getLeft();
 		if (groundIndex[(int)rz][(int)rx] == 2 && left != NULL) {
 			if (gold >= left->getData()->cost) {
@@ -224,6 +225,7 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	}
 	case '2':
 	{
+		if (!isselect) break;
 		techtree* mid = selecttower->getTechTree()->getMid();
 		if (groundIndex[(int)rz][(int)rx] == 2 && mid != NULL) {
 			if (gold >= mid->getData()->cost) {
@@ -236,6 +238,7 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	}
 	case '3':
 	{
+		if (!isselect) break;
 		techtree* right = selecttower->getTechTree()->getRight();
 		if (groundIndex[(int)rz][(int)rx] == 2 && right != NULL) {
 			if (gold >= right->getData()->cost) {
@@ -248,6 +251,7 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	}
 	case '4':
 	{
+		if (!isselect) break;
 		techtree* prev = selecttower->getTechTree()->getPrev();
 		if (groundIndex[(int)rz][(int)rx] == 2 && prev != NULL) {
 			gold += selecttower->getTechTree()->getData()->cost / 2;

@@ -150,6 +150,7 @@ void GloVar::InitGloVar() {
 	GloVar::tInfoTexture[4].InitTexture(GloVar::shader[0].GetShaderID(), "Tower121.bmp", "outTexture");
 	GloVar::tInfoTexture[5].InitTexture(GloVar::shader[0].GetShaderID(), "Tower122.bmp", "outTexture");
 	GloVar::tInfoTexture[6].InitTexture(GloVar::shader[0].GetShaderID(), "Tower1221.bmp", "outTexture");
+
 	// 사거리, 데미지, 쿨타임, 가격
 	techtree* rapidturret1 = new techtree(&GloVar::model_1turret, &GloVar::basicturretTexture, 6, 4, 500, 8, tInfoTexture[1], 2);
 	root.setLeft(rapidturret1);
