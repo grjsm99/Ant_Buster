@@ -33,6 +33,7 @@ public:
 	static Texture _4turretTexture;
 
 	static Texture missile1Texture;
+	static Texture missile2Texture;
 
 	static Model3D model_plain;
 	static Model3D model_cake;
@@ -43,6 +44,7 @@ public:
 	static Model3D model_2turret;
 	static Model3D model_4turret;
 	static Model3D model_missile1;
+	static Model3D model_missile2;
 	static Model3D model_selected;
 	static Model3D model_towerinfo[5];
 	static Model3D model_numui[3];

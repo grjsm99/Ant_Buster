@@ -22,6 +22,7 @@ Texture GloVar::_4turretTexture;
 
 
 Texture GloVar::missile1Texture;
+Texture GloVar::missile2Texture;
 Texture GloVar::MainUITexture;
 Texture GloVar::selectedTexture;
 Texture GloVar::numTexture[10];
@@ -38,6 +39,7 @@ Model3D GloVar::model_1turret;
 Model3D GloVar::model_2turret;
 Model3D GloVar::model_4turret;
 Model3D GloVar::model_missile1;
+Model3D GloVar::model_missile2;
 Model3D GloVar::model_selected;
 Model3D GloVar::model_numui[3];
 Model3D GloVar::model_towerinfo[5];
@@ -174,6 +176,12 @@ void GloVar::InitGloVar() {
 	GloVar::modelMaker.LoadObj("missile1_3d.obj");
 	GloVar::model_missile1 = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::missile1Texture.InitTexture(GloVar::shader[2].GetShaderID(), "missile1_3d.bmp", "outTexture");
+
+	//πÃªÁ¿œ2
+	GloVar::modelMaker.SetTransform(glm::vec3(0, 90, 0), glm::vec3(0.5, 0.5, 0.5), glm::vec3(0, 0, 0));
+	GloVar::modelMaker.LoadObj("missile2_3d.obj");
+	GloVar::model_missile2 = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
+	GloVar::missile2Texture.InitTexture(GloVar::shader[2].GetShaderID(), "missile2_3d.jpg", "outTexture");
 
 	
 }

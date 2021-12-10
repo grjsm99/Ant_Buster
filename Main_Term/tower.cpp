@@ -46,10 +46,11 @@ void Tower::Update() {
 		}
 		else {
 			cool -= 1;
-			transform.SetDir(glm::normalize(glm::vec3(targetPos.x - towerPos.x, 0, targetPos.z - towerPos.z)));
+			transform.TurnTargetSlow(target->GetTransfromPtr()->GetPos(), 3);
 			//임시로 확률적으로 공격하도록 함
 			if (cool == 0) {
-				Missile1* newMissile1 = new Missile1(GetCannonHole(), transform.GetDir(), target, data->getData()->damage);
+				//Missile1* newMissile1 = new Missile1(GetCannonHole(), transform.GetDir(), target, data->getData()->damage);
+				Missile2* newMissile1 = new Missile2(GetCannonHole(), transform.GetDir(), target, data->getData()->damage);
 				mainState::attacks.push_back(newMissile1);
 				cannonSwitch = !cannonSwitch;
 				cool = data->getData()->cooldown;

@@ -2,6 +2,7 @@
 #include "techtree.h"
 #include "ant.h"
 #include "missile1.h"
+#include "missile2.h"
 
 class Tower : public Object 
 {

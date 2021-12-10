@@ -151,6 +151,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainState.cpp" />
     <ClCompile Include="missile1.cpp" />
+    <ClCompile Include="missile2.cpp" />
     <ClCompile Include="model_3d.cpp" />
     <ClCompile Include="model_maker.cpp" />
     <ClCompile Include="numUI.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="light.h" />
     <ClInclude Include="mainState.h" />
     <ClInclude Include="missile1.h" />
+    <ClInclude Include="missile2.h" />
     <ClInclude Include="model_3d.h" />
     <ClInclude Include="model_maker.h" />
     <ClInclude Include="numUI.h" />
