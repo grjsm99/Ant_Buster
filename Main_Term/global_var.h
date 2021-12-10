@@ -23,11 +23,15 @@ public:
 	static Texture MainUITexture;
 	static Texture selectedTexture;
 	static Texture numTexture[10];
+	static Texture tInfoTexture[10];
 
 	static Texture AntTexture;
 
 	static Texture basicturretTexture;
 	static Texture iceturretTexture;
+	static Texture _2turretTexture;
+	static Texture _4turretTexture;
+
 	static Texture missile1Texture;
 
 	static Model3D model_plain;
@@ -35,9 +39,12 @@ public:
 	static Model3D titleScreen;
 	static Model3D model_antNest;
 	static Model3D model_ant;
-	static Model3D model_turret;
+	static Model3D model_1turret;
+	static Model3D model_2turret;
+	static Model3D model_4turret;
 	static Model3D model_missile1;
 	static Model3D model_selected;
+	static Model3D model_towerinfo[5];
 	static Model3D model_numui[3];
 	
 	// 모델, 텍스처, 사거리, 데미지, 공격속도 설정

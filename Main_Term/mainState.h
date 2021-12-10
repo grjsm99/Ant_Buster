@@ -15,6 +15,7 @@
 #include "cake.h"
 #include "selectedUI.h"
 #include "numUI.h"
+#include "techUI.h"
 class mainState : public State {
 	//필수 함수들
 	static GLvoid Reshape(int w, int h);
@@ -32,7 +33,9 @@ class mainState : public State {
 	static AntNest antNest;
 	static std::vector<cake*> cakeList;
 	static numUI numui;
-
+	static techUI techui;
+	static Tower* selecttower;
+	static bool isselect;
 
 public:
 	//public 변수

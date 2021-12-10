@@ -13,6 +13,6 @@ public:
 	void click(int, int);
 	glm::vec2 getIndex();
 	void Draw();
-
+	bool getSelect() { return select; };
 };
 

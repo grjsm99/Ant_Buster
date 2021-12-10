@@ -12,9 +12,9 @@ Tower::Tower(int x, int z) { // x,z = 0~9
 
 void Tower::Upgrade(int type) {
 	if(type == 1) data = data->getLeft();
-	if(type == 2) data = data->getRight();
-	if(type == 3) data = data->getMid();
-	if(type == 3) data = data->getPrev();
+	if(type == 2) data = data->getMid();
+	if(type == 3) data = data->getRight();
+	if(type == 4) data = data->getPrev();
 }
 
 void Tower::Draw() {
@@ -49,7 +49,7 @@ void Tower::Update() {
 			transform.SetDir(glm::normalize(glm::vec3(targetPos.x - towerPos.x, 0, targetPos.z - towerPos.z)));
 			//임시로 확률적으로 공격하도록 함
 			if (cool == 0) {
-				Missile1* newMissile1 = new Missile1(GetCannonHole(), transform.GetDir(), target);
+				Missile1* newMissile1 = new Missile1(GetCannonHole(), transform.GetDir(), target, data->getData()->damage);
 				mainState::attacks.push_back(newMissile1);
 				cannonSwitch = !cannonSwitch;
 				cool = data->getData()->cooldown;

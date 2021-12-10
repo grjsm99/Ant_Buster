@@ -12,11 +12,15 @@ class Tower : public Object
 	int tx;
 	int tz;
 public:
+	bool operator==(const Tower& t) {
+		std::cout << this->tx << "," << t.tx << ", " << this->tz << t.tz << std::endl; return (this->tx == t.tx && this->tz == t.tz);
+	};
 	Tower(int x, int z);
 	void Update();
 	void getNextTarget();
 	void Draw();
 	void Upgrade(int);
+	techtree* getTechTree() { return data; };
 	glm::vec2 towerIndex() { return glm::vec2(tx, tz); };
 	glm::vec3 GetCannonHole();
 };

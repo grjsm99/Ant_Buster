@@ -4,17 +4,22 @@ Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
-int mainState::gold = 103;
+int mainState::gold = 993;
 selectedUI mainState::selected;
 numUI mainState::numui;
+techUI mainState::techui;
+Tower* mainState::selecttower;
+bool mainState::isselect = false;
 char mainState::groundIndex[10][10]{0,}; // 0 = 건설불가, 1 = 건설가능 2 = 타워 존재 
 
 std::vector<Ant*> mainState::ants;
 std::vector<Tower*> mainState::towers;
 std::vector<Attack*> mainState::attacks;
 std::vector<cake*> mainState::cakeList;
-
 glm::vec3 mainState::attLights[200];
+
+float rx;
+float rz;
 
 GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수	
 {
@@ -54,7 +59,10 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 		digit++;
 
 	}
+	if (groundIndex[(int)rz][(int)rx] == 2 && isselect) techui.Draw();
+
 	GloVar::titleScreen.Draw(GloVar::MainUITexture);
+
 	glUseProgram(0);
 
 
@@ -152,33 +160,44 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		//std::cout << "x = " << x << " y = " << y << std::endl;
-	//std::cout << "사각형 클릭!!" << std::endl;
-		float m22 = 1.0f / std::tan(glm::radians(45.0f/ 2.0f));
-		float m11 = m22 / ((float)GloVar::winWidth / (float)GloVar::winHeight);
+		if (y > -0.5) { // ui밖 클릭시
+			//std::cout << "x = " << x << " y = " << y << std::endl;
+		//std::cout << "사각형 클릭!!" << std::endl;
+			float m22 = 1.0f / std::tan(glm::radians(45.0f / 2.0f));
+			float m11 = m22 / ((float)GloVar::winWidth / (float)GloVar::winHeight);
 
-		glm::vec3 start = camera.Eye();
-		//std::cout << "cam x = " << start.x << " y = " << start.y << " z = " << start.z << std::endl;
-		//std::cout << "cam x = " << camera.At().x << " y = " << camera.At().y << " z = " << camera.At().z << std::endl;
-		glm::vec4 ray(((2.0f * (float)x / (float)GloVar::winWidth) - 1.0f) / m11, ((-2.0f * (float)y/ (float)GloVar::winHeight) + 1.0f) / m22, -1.0f, 0);
-		glm::mat4 viewInverse(1.0f);
-		viewInverse = glm::transpose(glm::lookAt(camera.Eye(), camera.At(), camera.Up()));
+			glm::vec3 start = camera.Eye();
+			glm::vec4 ray(((2.0f * (float)x / (float)GloVar::winWidth) - 1.0f) / m11, ((-2.0f * (float)y / (float)GloVar::winHeight) + 1.0f) / m22, -1.0f, 0);
+			glm::mat4 viewInverse(1.0f);
+			viewInverse = glm::transpose(glm::lookAt(camera.Eye(), camera.At(), camera.Up()));
 
-		ray = viewInverse * ray;
-		//std::cout << "ray x = " << ray.x << " y = " << ray.y << " z = " << ray.z << std::endl;
-		float t = (0.0f - start.y) / ray.y;
-		float rx = start.x + t * ray.x;
-		float rz = start.z + t * ray.z;
-		rx = rx;
-		rz = rz;
-		std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
-		std::cout << "사각형 클릭!!" << std::endl;
-		rx = (int)(rx + 5);
-		rz = (int)(rz + 5);
-		//std::cout << (int)(rx + 5) << ", " << (int)(rz + 5) << std::endl;
+			ray = viewInverse * ray;
+			float t = (0.0f - start.y) / ray.y;
+			rx = start.x + t * ray.x;
+			rz = start.z + t * ray.z;
+			rx = rx;
+			rz = rz;
+			std::cout << "t = " << t << " x = " << rx << " z = " << rz << std::endl;
+			std::cout << "사각형 클릭!!" << std::endl;
+			rx = (int)(rx + 5);
+			rz = (int)(rz + 5);
 
-		if (rx >= 0 && rx <= 9 && rz >= 0 && rz <= 9) {
-			if(groundIndex[(int)rz][(int)rx] != 0) selected.click(rx, rz);
+			if (rx >= 0 && rx <= 9 && rz >= 0 && rz <= 9) {
+				if (groundIndex[(int)rz][(int)rx] != 0) {
+					selected.click(rx, rz);
+					isselect = selected.getSelect();
+					if (groundIndex[(int)rz][(int)rx] == 2) {
+						for (auto it = mainState::towers.begin(); it != mainState::towers.end(); it++) {
+							if ((*it)->towerIndex().x == rx && (*it)->towerIndex().y == rz) {
+								selecttower = *it;
+								break;
+							}
+						}
+						techui.InitTexture(selecttower->getTechTree());
+
+					}
+				}
+			}
 		}
 	}
 }
@@ -191,12 +210,62 @@ GLvoid mainState::Motion(int x, int y) {
 
 GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
+	case '1':
+	{
+		techtree* left = selecttower->getTechTree()->getLeft();
+		if (groundIndex[(int)rz][(int)rx] == 2 && left != NULL) {
+			if (gold >= left->getData()->cost) {
+				gold -= left->getData()->cost;
+				selecttower->Upgrade(1);
+				techui.InitTexture(selecttower->getTechTree());
+			}
+		}
+		break;
+	}
+	case '2':
+	{
+		techtree* mid = selecttower->getTechTree()->getMid();
+		if (groundIndex[(int)rz][(int)rx] == 2 && mid != NULL) {
+			if (gold >= mid->getData()->cost) {
+				gold -= mid->getData()->cost;
+				selecttower->Upgrade(2);
+				techui.InitTexture(selecttower->getTechTree());
+			}
+		}
+		break;
+	}
+	case '3':
+	{
+		techtree* right = selecttower->getTechTree()->getRight();
+		if (groundIndex[(int)rz][(int)rx] == 2 && right != NULL) {
+			if (gold >= right->getData()->cost) {
+				gold -= right->getData()->cost;
+				selecttower->Upgrade(3);
+				techui.InitTexture(selecttower->getTechTree());
+			}
+		}
+		break;
+	}
+	case '4':
+	{
+		techtree* prev = selecttower->getTechTree()->getPrev();
+		if (groundIndex[(int)rz][(int)rx] == 2 && prev != NULL) {
+			gold += selecttower->getTechTree()->getData()->cost / 2;
+			selecttower->Upgrade(4);
+			techui.InitTexture(selecttower->getTechTree());
+			
+		}
+		break;
+	}
 	case 't':
 		glm::vec2 selectIndex = selected.getIndex();
 		if (groundIndex[(int)selectIndex.y][(int)selectIndex.x] == 1 && gold >= 10) {
 			groundIndex[(int)selectIndex.y][(int)selectIndex.x] = 2;
 			Tower* t = new Tower(selectIndex.x, selectIndex.y);
+			//t->Upgrade(1);
+			techui.InitTexture(t->getTechTree());
 			towers.push_back(t);
+			selecttower = t;
 			gold -= 10;
 		}
 		break;
@@ -263,10 +332,7 @@ GLvoid mainState::Update(int value) {
 			if (cakeList.size() > 0) cakeList.pop_back();
 		}
 	}
-
-
 	
-
 	glutPostRedisplay();
 	glutTimerFunc(16, Update, 0);
 }

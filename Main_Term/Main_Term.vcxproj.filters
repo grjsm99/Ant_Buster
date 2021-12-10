@@ -111,6 +111,9 @@
     <ClCompile Include="global_var.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="techUI.cpp">
+      <Filter>소스 파일\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
@@ -180,6 +183,9 @@
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
     <ClInclude Include="numUI.h">
+      <Filter>헤더 파일\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="techUI.h">
       <Filter>헤더 파일\Unit</Filter>
     </ClInclude>
   </ItemGroup>

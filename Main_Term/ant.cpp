@@ -11,6 +11,7 @@ Ant::~Ant() {
 	for (int i = 0; i < pursuers.size(); ++i) {
 		pursuers[i]->SetTarget(0);
 	}
+	pursuers.clear();
 	pursuers.shrink_to_fit();
 }
 
@@ -43,7 +44,7 @@ bool Ant::Update() {
 			moveDist = 0;
 		}
 		else if (pos.x >= 4.5) {
-			//delete this;
+			delete this;
 			return true;
 		}
 	}

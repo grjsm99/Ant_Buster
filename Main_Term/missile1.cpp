@@ -3,17 +3,17 @@
 
 
 
-Missile1::Missile1(glm::vec3 _pos, glm::vec3 _dir, Ant* _target) {
+Missile1::Missile1(glm::vec3 _pos, glm::vec3 _dir, Ant* _target, float _dmg) {
 	myModel = &GloVar::model_missile1;
 	texture = &GloVar::missile1Texture;
 	
 	transform.SetPos(_pos);
 	transform.SetDir(_dir);
 
-	dmg = 10.0f;
+	dmg = _dmg;
 	speed = 0.005f;
 	spinSpeed = 5.0f;
-	lifeTime = 3.0f;
+	lifeTime = 1.0f;
 	target = _target;
 	if (target != 0) {
 		target->AddPursuer(this);

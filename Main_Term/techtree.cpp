@@ -14,3 +14,4 @@ void techtree::setMid(techtree* child) {
 void techtree:: setPrev(techtree* parent) {
 	prev = parent;
 }
+
