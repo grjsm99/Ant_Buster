@@ -220,10 +220,10 @@ void GloVar::InitGloVar() {
 	techtree* heavydouble = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[8], 4, 18, 500, 21, tInfoTexture[8], 1, 2);
 	doubleturret1->setLeft(heavydouble);
 
-	techtree* poisonturret1 = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[9], 2, 50, 200, 40, tInfoTexture[9], 4, 2);
+	techtree* poisonturret1 = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[9], 2, 5, 200, 40, tInfoTexture[9], 4, 2);
 	doubleturret1->setMid(poisonturret1);
 
-	techtree* poisonturret2 = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[15], 2, 50, 200, 40, tInfoTexture[15], 4, 2);
+	techtree* poisonturret2 = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[15], 2, 9, 200, 40, tInfoTexture[15], 4, 2);
 	poisonturret1->setLeft(poisonturret2);
 
 	techtree* rapiddouble1 = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[10], 7, 6, 250, 19, tInfoTexture[10], 1, 2);
