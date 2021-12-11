@@ -17,4 +17,6 @@ public:
 
 	void Update();
 
+	void Reset();
+
 };

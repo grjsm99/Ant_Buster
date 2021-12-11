@@ -350,6 +350,12 @@ GLvoid mainState::Update(int value) {
 	for (int i = 0; i < ants.size(); ++i) {
 		if (ants[i]->Update()) {
 			if (cakeList.size() > 0) cakeList.pop_back();
+			if (cakeList.size() == 0) {
+				State* newState = new gameoverState();	//이부분 수정
+				GloVar::glptr->chstate(newState);
+				return;
+			}
+
 		}
 	}
 	

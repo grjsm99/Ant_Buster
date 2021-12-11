@@ -16,6 +16,7 @@ public:
 	static GLManager* glptr;
 
 	static Texture TitleTexture;
+	static Texture gameoverTexture;
 	static Texture bgTexture;
 	static Texture GroundTexture;
 	static Texture AntNestTexture;

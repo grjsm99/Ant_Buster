@@ -8,6 +8,7 @@ Shader GloVar::shader[3];
 GLManager* GloVar::glptr;
 
 Texture GloVar::TitleTexture;
+Texture GloVar::gameoverTexture;
 Texture GloVar::bgTexture;
 Texture GloVar::GroundTexture;
 Texture GloVar::AntNestTexture;
@@ -54,6 +55,7 @@ void GloVar::InitGloVar() {
 	GloVar::modelMaker.LoadObj("plain.obj");
 	GloVar::titleScreen = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");
+	GloVar::gameoverTexture.InitTexture(GloVar::shader[0].GetShaderID(), "gameover.png", "outTexture");
 	GloVar::bgTexture.InitTexture(GloVar::shader[0].GetShaderID(), "bg.jpg", "outTexture");
 	GloVar::MainUITexture.InitTexture(GloVar::shader[0].GetShaderID(), "mainui.bmp", "outTexture");
 

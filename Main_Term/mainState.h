@@ -4,6 +4,7 @@
 #include "global_var.h"
 
 #include "state.h"
+#include "gameoverState.h"
 #include "model_3d.h"
 #include "model_maker.h"
 #include "glManager.h"
@@ -74,7 +75,19 @@ public:
 			}
 		}
 		*/
+
+
+		//초기화
+		gold = 8;
+		isselect = false;
+
+		ants.clear();
+		towers.clear();
+		attacks.clear();
+		antNest.Reset();
 	};
+
+	void Reset();
 
 	//자신의 함수 연결하기
 	void SetCallbackFunc();

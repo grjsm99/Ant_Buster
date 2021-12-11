@@ -145,6 +145,7 @@
     <ClCompile Include="attack.cpp" />
     <ClCompile Include="cake.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="gameoverState.cpp" />
     <ClCompile Include="glManager.cpp" />
     <ClCompile Include="global_var.cpp" />
     <ClCompile Include="light.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="attack.h" />
     <ClInclude Include="cake.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="gameoverState.h" />
     <ClInclude Include="glManager.h" />
     <ClInclude Include="global_var.h" />
     <ClInclude Include="light.h" />
