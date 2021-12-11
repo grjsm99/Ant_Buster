@@ -52,138 +52,138 @@ ModelMaker GloVar::modelMaker;
 
 void GloVar::InitGloVar() {
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(2, 2, 2), glm::vec3(0, 0, 0));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::titleScreen = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "title.png", "outTexture");
-	GloVar::gameoverTexture.InitTexture(GloVar::shader[0].GetShaderID(), "gameover.png", "outTexture");
-	GloVar::bgTexture[0].InitTexture(GloVar::shader[0].GetShaderID(), "bgnat.jpg", "outTexture");
-	GloVar::bgTexture[1].InitTexture(GloVar::shader[0].GetShaderID(), "bgbam.jpg", "outTexture");
-	GloVar::MainUITexture.InitTexture(GloVar::shader[0].GetShaderID(), "mainui.bmp", "outTexture");
+	GloVar::TitleTexture.InitTexture(GloVar::shader[0].GetShaderID(), "img/title.png", "outTexture");
+	GloVar::gameoverTexture.InitTexture(GloVar::shader[0].GetShaderID(), "img/gameover.png", "outTexture");
+	GloVar::bgTexture[0].InitTexture(GloVar::shader[0].GetShaderID(), "img/bgnat.jpg", "outTexture");
+	GloVar::bgTexture[1].InitTexture(GloVar::shader[0].GetShaderID(), "img/bgbam.jpg", "outTexture");
+	GloVar::MainUITexture.InitTexture(GloVar::shader[0].GetShaderID(), "img/mainui.bmp", "outTexture");
 
 
 	
 	// 타워 정보
 
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.4, 0.15, 0.6), glm::vec3(-0.45, 0.5, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_towerinfo[0] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.4, 0.15, 0.6), glm::vec3(-0.7, -0.2, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_towerinfo[1] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.4, 0.15, 0.6), glm::vec3(-0.25, -0.2, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_towerinfo[2] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.4, 0.15, 0.6), glm::vec3(0.2, -0.2, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_towerinfo[3] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.4, 0.15, 0.6), glm::vec3(0.3, 0.5, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_towerinfo[4] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 
 	// 숫자
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.1, 0.15, 0.5), glm::vec3(0.85, -0.4, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_numui[0] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.1, 0.15, 0.5), glm::vec3(0.75, -0.4, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_numui[1] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::modelMaker.SetTransform(glm::vec3(90.0f, 0, 0), glm::vec3(0.1, 0.15, 0.5), glm::vec3(0.65, -0.4, -0.2));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_numui[2] = GloVar::modelMaker.MakeModel3D(GloVar::shader[0].GetShaderID(), "vPos", "vNormal", "tPos");
 
-	GloVar::numTexture[0].InitTexture(GloVar::shader[0].GetShaderID(), "Num0.bmp", "outTexture");
-	GloVar::numTexture[1].InitTexture(GloVar::shader[0].GetShaderID(), "Num1.bmp", "outTexture");
-	GloVar::numTexture[2].InitTexture(GloVar::shader[0].GetShaderID(), "Num2.bmp", "outTexture");
-	GloVar::numTexture[3].InitTexture(GloVar::shader[0].GetShaderID(), "Num3.bmp", "outTexture");
-	GloVar::numTexture[4].InitTexture(GloVar::shader[0].GetShaderID(), "Num4.bmp", "outTexture");
-	GloVar::numTexture[5].InitTexture(GloVar::shader[0].GetShaderID(), "Num5.bmp", "outTexture");
-	GloVar::numTexture[6].InitTexture(GloVar::shader[0].GetShaderID(), "Num6.bmp", "outTexture");
-	GloVar::numTexture[7].InitTexture(GloVar::shader[0].GetShaderID(), "Num7.bmp", "outTexture");
-	GloVar::numTexture[8].InitTexture(GloVar::shader[0].GetShaderID(), "Num8.bmp", "outTexture");
-	GloVar::numTexture[9].InitTexture(GloVar::shader[0].GetShaderID(), "Num9.bmp", "outTexture");
+	GloVar::numTexture[0].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num0.bmp", "outTexture");
+	GloVar::numTexture[1].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num1.bmp", "outTexture");
+	GloVar::numTexture[2].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num2.bmp", "outTexture");
+	GloVar::numTexture[3].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num3.bmp", "outTexture");
+	GloVar::numTexture[4].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num4.bmp", "outTexture");
+	GloVar::numTexture[5].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num5.bmp", "outTexture");
+	GloVar::numTexture[6].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num6.bmp", "outTexture");
+	GloVar::numTexture[7].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num7.bmp", "outTexture");
+	GloVar::numTexture[8].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num8.bmp", "outTexture");
+	GloVar::numTexture[9].InitTexture(GloVar::shader[0].GetShaderID(), "img/Num9.bmp", "outTexture");
 
 
 	//땅바닥
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(10, 1, 10), glm::vec3(0, 0, 0));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_plain = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::GroundTexture.InitTexture(GloVar::shader[2].GetShaderID(), "gr.jpg", "outTexture");
+	GloVar::GroundTexture.InitTexture(GloVar::shader[2].GetShaderID(), "img/gr.jpg", "outTexture");
 
 	// 선택 표시
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0));
-	GloVar::modelMaker.LoadObj("plain.obj");
+	GloVar::modelMaker.LoadObj("obj/plain.obj");
 	GloVar::model_selected = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::selectedTexture.InitTexture(GloVar::shader[2].GetShaderID(), "selected.jpg", "outTexture");
+	GloVar::selectedTexture.InitTexture(GloVar::shader[2].GetShaderID(), "img/selected.jpg", "outTexture");
 
 	// 케이크
 	GloVar::modelMaker.SetTransform(glm::vec3(0, -45, 0), glm::vec3(1,1,1), glm::vec3(0, 0.1, -0.2));
-	GloVar::modelMaker.LoadObj("cake.obj");
+	GloVar::modelMaker.LoadObj("obj/cake.obj");
 	GloVar::model_cake = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::CakeTexture.InitTexture(GloVar::shader[2].GetShaderID(), "cake_n.jpg", "outTexture");
+	GloVar::CakeTexture.InitTexture(GloVar::shader[2].GetShaderID(), "img/cake_n.jpg", "outTexture");
 	//개미집
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.1, 0));
-	GloVar::modelMaker.LoadObj("antNest.obj");
+	GloVar::modelMaker.LoadObj("obj/antNest.obj");
 	GloVar::model_antNest = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::AntNestTexture.InitTexture(GloVar::shader[2].GetShaderID(), "antNest.bmp", "outTexture");
+	GloVar::AntNestTexture.InitTexture(GloVar::shader[2].GetShaderID(), "img/antNest.bmp", "outTexture");
 
 	//개미
 	GloVar::modelMaker.SetTransform(glm::vec3(-90, 90, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.2, 0));
-	GloVar::modelMaker.LoadObj("ant3d.obj");
+	GloVar::modelMaker.LoadObj("obj/ant3d.obj");
 	GloVar::model_ant = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::AntTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ant3d.jpg", "outTexture");
-	GloVar::AntSnowingTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ant3d_snowing.jpg", "outTexture");
-	GloVar::AntPoisoningTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ant3d_poisoning.jpg", "outTexture");
+	GloVar::AntTexture.InitTexture(GloVar::shader[2].GetShaderID(), "img/ant3d.jpg", "outTexture");
+	GloVar::AntSnowingTexture.InitTexture(GloVar::shader[2].GetShaderID(), "img/ant3d_snowing.jpg", "outTexture");
+	GloVar::AntPoisoningTexture.InitTexture(GloVar::shader[2].GetShaderID(), "img/ant3d_poisoning.jpg", "outTexture");
 
 	//터렛
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 180, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.3, 0.0));
-	GloVar::modelMaker.LoadObj("1turret.obj");
+	GloVar::modelMaker.LoadObj("obj/1turret.obj");
 	GloVar::model_1turret = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 
 	GloVar::modelMaker.SetTransform(glm::vec3(0, -90, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.4, 0.15));
-	GloVar::modelMaker.LoadObj("2turret.obj");
+	GloVar::modelMaker.LoadObj("obj/2turret.obj");
 	GloVar::model_2turret = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 0, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.4, 0.0));
-	GloVar::modelMaker.LoadObj("4turret.obj");
+	GloVar::modelMaker.LoadObj("obj/4turret.obj");
 	GloVar::model_4turret = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 
-	GloVar::turretTexture[0].InitTexture(GloVar::shader[2].GetShaderID(), "ttex100.bmp", "outTexture");
-	GloVar::turretTexture[1].InitTexture(GloVar::shader[2].GetShaderID(), "ttex110.bmp", "outTexture");
-	GloVar::turretTexture[2].InitTexture(GloVar::shader[2].GetShaderID(), "ttex111.bmp", "outTexture");
-	GloVar::turretTexture[3].InitTexture(GloVar::shader[2].GetShaderID(), "ttex112.bmp", "outTexture");
-	GloVar::turretTexture[4].InitTexture(GloVar::shader[2].GetShaderID(), "ttex120.bmp", "outTexture");
-	GloVar::turretTexture[5].InitTexture(GloVar::shader[2].GetShaderID(), "ttex121.bmp", "outTexture");
-	GloVar::turretTexture[6].InitTexture(GloVar::shader[2].GetShaderID(), "ttex122.bmp", "outTexture");
-	GloVar::turretTexture[7].InitTexture(GloVar::shader[2].GetShaderID(), "ttex130.bmp", "outTexture");
-	GloVar::turretTexture[8].InitTexture(GloVar::shader[2].GetShaderID(), "ttex131.bmp", "outTexture");
-	GloVar::turretTexture[9].InitTexture(GloVar::shader[2].GetShaderID(), "ttex132.bmp", "outTexture");
-	GloVar::turretTexture[10].InitTexture(GloVar::shader[2].GetShaderID(), "ttex133.bmp", "outTexture");
-	GloVar::turretTexture[11].InitTexture(GloVar::shader[2].GetShaderID(), "ttex1111.bmp", "outTexture");
-	GloVar::turretTexture[12].InitTexture(GloVar::shader[2].GetShaderID(), "ttex1121.bmp", "outTexture");
-	GloVar::turretTexture[13].InitTexture(GloVar::shader[2].GetShaderID(), "ttex1211.bmp", "outTexture");
-	GloVar::turretTexture[14].InitTexture(GloVar::shader[2].GetShaderID(), "ttex1221.bmp", "outTexture");
-	GloVar::turretTexture[15].InitTexture(GloVar::shader[2].GetShaderID(), "ttex1321.bmp", "outTexture");
-	GloVar::turretTexture[16].InitTexture(GloVar::shader[2].GetShaderID(), "ttex1331.bmp", "outTexture");
-	GloVar::turretTexture[17].InitTexture(GloVar::shader[2].GetShaderID(), "ttex13311.bmp", "outTexture");
+	GloVar::turretTexture[0].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex100.bmp", "outTexture");
+	GloVar::turretTexture[1].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex110.bmp", "outTexture");
+	GloVar::turretTexture[2].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex111.bmp", "outTexture");
+	GloVar::turretTexture[3].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex112.bmp", "outTexture");
+	GloVar::turretTexture[4].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex120.bmp", "outTexture");
+	GloVar::turretTexture[5].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex121.bmp", "outTexture");
+	GloVar::turretTexture[6].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex122.bmp", "outTexture");
+	GloVar::turretTexture[7].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex130.bmp", "outTexture");
+	GloVar::turretTexture[8].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex131.bmp", "outTexture");
+	GloVar::turretTexture[9].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex132.bmp", "outTexture");
+	GloVar::turretTexture[10].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex133.bmp", "outTexture");
+	GloVar::turretTexture[11].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex1111.bmp", "outTexture");
+	GloVar::turretTexture[12].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex1121.bmp", "outTexture");
+	GloVar::turretTexture[13].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex1211.bmp", "outTexture");
+	GloVar::turretTexture[14].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex1221.bmp", "outTexture");
+	GloVar::turretTexture[15].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex1321.bmp", "outTexture");
+	GloVar::turretTexture[16].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex1331.bmp", "outTexture");
+	GloVar::turretTexture[17].InitTexture(GloVar::shader[2].GetShaderID(), "img/ttex13311.bmp", "outTexture");
 
-	GloVar::tInfoTexture[0].InitTexture(GloVar::shader[0].GetShaderID(), "Tower100.bmp", "outTexture");
-	GloVar::tInfoTexture[1].InitTexture(GloVar::shader[0].GetShaderID(), "Tower110.bmp", "outTexture");
-	GloVar::tInfoTexture[2].InitTexture(GloVar::shader[0].GetShaderID(), "Tower111.bmp", "outTexture");
-	GloVar::tInfoTexture[3].InitTexture(GloVar::shader[0].GetShaderID(), "Tower112.bmp", "outTexture");
-	GloVar::tInfoTexture[4].InitTexture(GloVar::shader[0].GetShaderID(), "Tower120.bmp", "outTexture");
-	GloVar::tInfoTexture[5].InitTexture(GloVar::shader[0].GetShaderID(), "Tower121.bmp", "outTexture");
-	GloVar::tInfoTexture[6].InitTexture(GloVar::shader[0].GetShaderID(), "Tower122.bmp", "outTexture");
-	GloVar::tInfoTexture[7].InitTexture(GloVar::shader[0].GetShaderID(), "Tower130.bmp", "outTexture");
-	GloVar::tInfoTexture[8].InitTexture(GloVar::shader[0].GetShaderID(), "Tower131.bmp", "outTexture");
-	GloVar::tInfoTexture[9].InitTexture(GloVar::shader[0].GetShaderID(), "Tower132.bmp", "outTexture");
-	GloVar::tInfoTexture[10].InitTexture(GloVar::shader[0].GetShaderID(), "Tower133.bmp", "outTexture");
-	GloVar::tInfoTexture[11].InitTexture(GloVar::shader[0].GetShaderID(), "Tower1111.bmp", "outTexture");
-	GloVar::tInfoTexture[12].InitTexture(GloVar::shader[0].GetShaderID(), "Tower1121.bmp", "outTexture");
-	GloVar::tInfoTexture[13].InitTexture(GloVar::shader[0].GetShaderID(), "Tower1211.bmp", "outTexture");
-	GloVar::tInfoTexture[14].InitTexture(GloVar::shader[0].GetShaderID(), "Tower1221.bmp", "outTexture");
-	GloVar::tInfoTexture[15].InitTexture(GloVar::shader[0].GetShaderID(), "Tower1321.bmp", "outTexture");
-	GloVar::tInfoTexture[16].InitTexture(GloVar::shader[0].GetShaderID(), "Tower1331.bmp", "outTexture");
-	GloVar::tInfoTexture[17].InitTexture(GloVar::shader[0].GetShaderID(), "Tower13311.bmp", "outTexture");
+	GloVar::tInfoTexture[0].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower100.bmp", "outTexture");
+	GloVar::tInfoTexture[1].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower110.bmp", "outTexture");
+	GloVar::tInfoTexture[2].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower111.bmp", "outTexture");
+	GloVar::tInfoTexture[3].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower112.bmp", "outTexture");
+	GloVar::tInfoTexture[4].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower120.bmp", "outTexture");
+	GloVar::tInfoTexture[5].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower121.bmp", "outTexture");
+	GloVar::tInfoTexture[6].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower122.bmp", "outTexture");
+	GloVar::tInfoTexture[7].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower130.bmp", "outTexture");
+	GloVar::tInfoTexture[8].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower131.bmp", "outTexture");
+	GloVar::tInfoTexture[9].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower132.bmp", "outTexture");
+	GloVar::tInfoTexture[10].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower133.bmp", "outTexture");
+	GloVar::tInfoTexture[11].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower1111.bmp", "outTexture");
+	GloVar::tInfoTexture[12].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower1121.bmp", "outTexture");
+	GloVar::tInfoTexture[13].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower1211.bmp", "outTexture");
+	GloVar::tInfoTexture[14].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower1221.bmp", "outTexture");
+	GloVar::tInfoTexture[15].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower1321.bmp", "outTexture");
+	GloVar::tInfoTexture[16].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower1331.bmp", "outTexture");
+	GloVar::tInfoTexture[17].InitTexture(GloVar::shader[0].GetShaderID(), "img/Tower13311.bmp", "outTexture");
 
 	// 사거리, 데미지, 쿨타임, 가격 . 1 = 기본탄 2 = 로켓탄 3 = 얼음(둔화) 4 = 독(도트데미지)
 	// 1 = 1터렛, 2 = 2터렛, 3 = 3터렛
@@ -240,15 +240,15 @@ void GloVar::InitGloVar() {
 
 	//미사일1
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 180, 0), glm::vec3(0.5, 0.5, 0.5), glm::vec3(0, 0, 0));
-	GloVar::modelMaker.LoadObj("missile1_3d.obj");
+	GloVar::modelMaker.LoadObj("obj/missile1_3d.obj");
 	GloVar::model_missile1 = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::missile1Texture.InitTexture(GloVar::shader[2].GetShaderID(), "missile1_3d.bmp", "outTexture");
+	GloVar::missile1Texture.InitTexture(GloVar::shader[2].GetShaderID(), "img/missile1_3d.bmp", "outTexture");
 
 	//미사일2
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 90, 0), glm::vec3(0.5, 0.5, 0.5), glm::vec3(0, 0, 0));
-	GloVar::modelMaker.LoadObj("missile2_3d.obj");
+	GloVar::modelMaker.LoadObj("obj/missile2_3d.obj");
 	GloVar::model_missile2 = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
-	GloVar::missile2Texture.InitTexture(GloVar::shader[2].GetShaderID(), "missile2_3d.jpg", "outTexture");
+	GloVar::missile2Texture.InitTexture(GloVar::shader[2].GetShaderID(), "img/missile2_3d.jpg", "outTexture");
 
 	
 }
