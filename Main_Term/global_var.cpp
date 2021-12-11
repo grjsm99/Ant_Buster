@@ -12,6 +12,8 @@ Texture GloVar::bgTexture;
 Texture GloVar::GroundTexture;
 Texture GloVar::AntNestTexture;
 Texture GloVar::AntTexture;
+Texture GloVar::AntSnowingTexture;
+Texture GloVar::AntPoisoningTexture;
 Texture GloVar::CakeTexture;
 
 
@@ -126,6 +128,8 @@ void GloVar::InitGloVar() {
 	GloVar::modelMaker.LoadObj("ant3d.obj");
 	GloVar::model_ant = GloVar::modelMaker.MakeModel3D(GloVar::shader[2].GetShaderID(), "vPos", "vNormal", "tPos");
 	GloVar::AntTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ant3d.jpg", "outTexture");
+	GloVar::AntSnowingTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ant3d_snowing.jpg", "outTexture");
+	GloVar::AntPoisoningTexture.InitTexture(GloVar::shader[2].GetShaderID(), "ant3d_poisoning.jpg", "outTexture");
 
 	//≈Õ∑ø
 	GloVar::modelMaker.SetTransform(glm::vec3(0, 180, 0), glm::vec3(1, 1, 1), glm::vec3(0, 0.3, 0.0));

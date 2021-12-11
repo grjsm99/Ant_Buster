@@ -3,6 +3,8 @@
 
 Ant::Ant(int stage) {
 	hp = stage * 14;
+	speed = 0.05f;
+	moveDist = 0;
 	transform.SetPos(glm::vec3(-4.5, 0, -4.5));
 	bounty = 1;
 }
@@ -37,8 +39,48 @@ void Ant::Draw() {
 }
 
 bool Ant::Update() {
-	transform.MoveFront(speed);
-	moveDist += speed;
+	texture = &GloVar::AntTexture;
+
+	if (poisonings.size() > 0) {
+		texture = &GloVar::AntPoisoningTexture;
+	}
+	for (int i = 0; i < poisonings.size(); ++i) {
+		//지속시간 적용
+		poisonings[i].first -= 1.0f / 60.0f;
+		if (poisonings[i].first <= 0) {
+			poisonings.erase(poisonings.begin() + i);
+			i--;
+			continue;
+		}
+
+		//데미지 적용(초당 poisonings[i].second 만큼)
+		hp -= poisonings[i].second / 60.0f;
+		if (hp <= 0.0f) {
+			mainState::gold += bounty;
+			delete this;
+			return true;
+		}
+	}
+
+	float realSpeed = speed;
+	if (snowings.size() > 0) {
+		texture = &GloVar::AntSnowingTexture;
+	}
+	for (int i = 0; i < snowings.size(); ++i) {
+		//지속시간 적용
+		snowings[i].first -= 1.0f / 60.0f;
+		if (snowings[i].first <= 0) {
+			snowings.erase(snowings.begin() + i);
+			i--;
+			continue;
+		}
+
+		//둔화 적용
+		realSpeed *= (1.0f - snowings[i].second);
+	}
+
+	transform.MoveFront(realSpeed);
+	moveDist += realSpeed;
 	glm::vec3 dir = transform.GetDir();
 	glm::vec3 pos = transform.GetPos();
 	if (dir.x != 0) {
@@ -80,4 +122,11 @@ void Ant::PopPursuer(Attack* _attack) {
 			return;
 		}
 	}
+}
+
+void Ant::AddSnowing(std::pair<float, float> _newSnowing) {
+	snowings.push_back(_newSnowing);
+}
+void Ant::AddPoisoning(std::pair<float, float> _newPoisoning) {
+	poisonings.push_back(_newPoisoning);
 }

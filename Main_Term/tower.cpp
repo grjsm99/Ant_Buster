@@ -60,10 +60,12 @@ void Tower::Update() {
 				}
 				if(towerdata->firetype == 3) {
 					Missile1* newMissile = new Missile1(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
+					newMissile->SetSnow(std::pair<float, float>(1.0f, 0.3f));	//미사일에 1.0초 동안 유지되는 30% 둔화시키는 눈을 장착 (무한중첩됨)
 					mainState::attacks.push_back(newMissile);
 				}
 				if (towerdata->firetype == 4) {
 					Missile1* newMissile = new Missile1(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
+					newMissile->SetPoison(std::pair<float, float>(4.0f, 1.0f));	//미사일에 4.0초 동안 초당 1데미지를 주는 독을 장착 (무한중첩됨)
 					mainState::attacks.push_back(newMissile);
 				}
 				cannonSwitch = !cannonSwitch;

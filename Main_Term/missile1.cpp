@@ -56,6 +56,12 @@ void Missile1::Update() {
 		transform.TurnTargetSlow(targetPos, spinSpeed);
 		if (glm::distance(transform.GetPos(), targetPos) <= 0.5f) {
 			//데미지 주면서 삭제됨
+			if (snow != std::pair<float, float>(0, 0)) {
+				target->AddSnowing(snow);
+			}
+			if (poison != std::pair<float, float>(0, 0)) {
+				target->AddPoisoning(poison);
+			}
 			target->Attacked(dmg);
 			delete this;
 			return;

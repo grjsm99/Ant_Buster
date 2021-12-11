@@ -27,6 +27,8 @@ public:
 	static Texture turretTexture[20];
 
 	static Texture AntTexture;
+	static Texture AntSnowingTexture;
+	static Texture AntPoisoningTexture;
 
 	static Texture basicturretTexture;
 	static Texture iceturretTexture;
