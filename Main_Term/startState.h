@@ -21,6 +21,7 @@ public:
 	//생성자
 	startState() {
 		SetCallbackFunc();
+		glutPostRedisplay();
 	};
 
 	//자신의 함수 연결하기

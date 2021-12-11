@@ -4,12 +4,13 @@ Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
-int mainState::gold = 8;
+int mainState::gold = 300;
 selectedUI mainState::selected;
 numUI mainState::numui;
 techUI mainState::techui;
 Tower* mainState::selecttower;
 bool mainState::isselect = false;
+bool isnight = false;
 char mainState::groundIndex[10][10]{0,}; // 0 = 건설불가, 1 = 건설가능 2 = 타워 존재 
 
 std::vector<Ant*> mainState::ants;
@@ -43,7 +44,7 @@ GLvoid mainState::drawScene() //--- 콜백 함수: 그리기 콜백 함수
 	glUseProgram(UIshader);
 
 	glViewport(0, 350, GloVar::winWidth, GloVar::winHeight - 350);	// 배경화면 그리기
-	GloVar::titleScreen.Draw(GloVar::bgTexture);
+	GloVar::titleScreen.Draw(GloVar::bgTexture[isnight]);
 
 	glEnable(GL_DEPTH_TEST); // 은면제거용
 
@@ -292,14 +293,13 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	case 'p':
 		camera.Topview();
 		break;
-	case 'y':
-		cakeList.pop_back();
-		break;
 	case 'n':
 		sun.SetColor(0.2, 0.2, 0.2);
+		isnight = true;
 		break;
 	case 'm':
 		sun.SetColor(1, 1, 1);
+		isnight = false;
 		break;
 	case 'q':
 		glutDestroyWindow(1);
@@ -309,22 +309,7 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 
 GLvoid mainState::sKeyboard(int key, int x, int y) {
 	switch (key) {
-	case GLUT_KEY_UP:
-
-		glutPostRedisplay();
-		break;
-	case GLUT_KEY_DOWN:
-
-		glutPostRedisplay();
-		break;
-	case GLUT_KEY_LEFT:
-
-		glutPostRedisplay();
-		break;
-	case GLUT_KEY_RIGHT:
-
-		glutPostRedisplay();
-		break;
+	
 	}
 }
 

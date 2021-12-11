@@ -36,7 +36,7 @@ void AntNest::Update() {
 
 void AntNest::Reset() {
 	cooldown = 120; // 프레임 단위
-	stage = 1;
+	stage = 10;
 	antSpawnCount = 0;
 	cool = 0;
 }

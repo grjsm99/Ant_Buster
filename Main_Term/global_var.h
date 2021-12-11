@@ -17,7 +17,7 @@ public:
 
 	static Texture TitleTexture;
 	static Texture gameoverTexture;
-	static Texture bgTexture;
+	static Texture bgTexture[2];
 	static Texture GroundTexture;
 	static Texture AntNestTexture;
 	static Texture CakeTexture;

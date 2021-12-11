@@ -93,7 +93,7 @@ void Tower::getNextTarget() {
 glm::vec3 Tower::GetCannonHole(Status* _data) {
 	glm::vec3 cannonHolePos;	//포구의 높이로 생성
 	if (_data->modeltype == 1) {
-		cannonHolePos = glm::vec3(0, 0.55f, 0.1f);
+		cannonHolePos = glm::vec3(0, 0.4f, 0.1f);
 	}
 	if (_data->modeltype == 2) {
 		cannonHolePos = glm::vec3(0, 0.4f, 0.4f);

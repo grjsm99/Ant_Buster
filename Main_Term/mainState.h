@@ -62,12 +62,6 @@ public:
 			dir = rot * dir;
 			cakeList.push_back(c);
 		}
-
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 9; j++) {
-				groundIndex[j + i % 2][1 + i * 2] = 1;
-			}
-		}
 		/*for (int i = 0; i < 10; i++) {
 			for (int j = 2; j < 10; j++) {
 				Tower* t = new Tower(j, i);
@@ -78,9 +72,18 @@ public:
 
 
 		//ÃÊ±âÈ­
-		gold = 8;
+		gold = 999;
 		isselect = false;
-
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				groundIndex[i][j] = 0;
+			}
+		}
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 9; j++) {
+				groundIndex[j + i % 2][1 + i * 2] = 1;
+			}
+		}
 		ants.clear();
 		towers.clear();
 		attacks.clear();

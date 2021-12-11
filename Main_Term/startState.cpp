@@ -35,22 +35,17 @@ GLvoid startState::Mouse(int button, int state, int x, int y) {
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		//POINTFLOAT conXY = convertGLXY(x, y);
-		std::cout << "x = " << x << " y = " << y << std::endl;
-		std::cout << "사각형 클릭!!" << std::endl;
+		State* newState = new mainState();
+		GloVar::glptr->chstate(newState);
+		glutPostRedisplay();
+
 	}
 }
 
 
 GLvoid startState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
-	case 'p':
-	{
-		State* newState = new mainState();
-		GloVar::glptr->chstate(newState);
-		glutPostRedisplay();
-		break;
-	}
+
 	case 'q':
 		glutDestroyWindow(1);
 		break;

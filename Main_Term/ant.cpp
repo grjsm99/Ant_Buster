@@ -58,7 +58,7 @@ bool Ant::Update() {
 		if (hp <= 0.0f) {
 			mainState::gold += bounty;
 			delete this;
-			return true;
+			return false;
 		}
 	}
 
