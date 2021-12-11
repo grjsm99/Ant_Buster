@@ -1,8 +1,7 @@
 #include "camera.h"
 
 Camera::Camera() {
-	transform.SetDir(glm::normalize(glm::vec3(0, -1, -2)));
-	transform.SetPos(glm::vec3(0, 4, 12));
+	defaultview();
 }
 
 glm::vec3 Camera::Eye() {
@@ -13,7 +12,17 @@ glm::vec3 Camera::At() {
 	//return glm::vec3(0,0,4);
 }
 glm::vec3 Camera::Up() {
-	return glm::vec3(0, 1, 0);
+	return glm::vec3(0, 0, -1);
+}
+
+void Camera::Topview() {
+	transform.SetDir(glm::normalize(glm::vec3(0, -1, 0)));
+	transform.SetPos(glm::vec3(0, 22, 4));
+}
+
+void Camera::defaultview() {
+	transform.SetDir(glm::normalize(glm::vec3(0, -1, -2)));
+	transform.SetPos(glm::vec3(0, 4, 12));
 }
 
 void Camera::Move(glm::vec3 value) {

@@ -1,7 +1,8 @@
 #include "ant.h"
 #include "mainState.h"
 
-Ant::Ant() {
+Ant::Ant(int stage) {
+	hp = stage * 14;
 	transform.SetPos(glm::vec3(-4.5, 0, -4.5));
 	bounty = 1;
 }
@@ -10,6 +11,9 @@ Ant::~Ant() {
 	mainState::ants.erase(std::remove(mainState::ants.begin(), mainState::ants.end(), this), mainState::ants.end());
 	for (int i = 0; i < pursuers.size(); ++i) {
 		pursuers[i]->SetTarget(0);
+	}
+	for (int i = 0; i < mainState::towers.size(); ++i) {
+		if (mainState::towers[i]->getTarget() == this) mainState::towers[i]->InitTarget();
 	}
 	pursuers.clear();
 	pursuers.shrink_to_fit();

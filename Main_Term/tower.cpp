@@ -46,8 +46,8 @@ void Tower::Update() {
 		}
 		else {
 			cool -= 1;
-			transform.TurnTargetSlow(target->GetTransfromPtr()->GetPos(), 3);
-			//임시로 확률적으로 공격하도록 함
+			transform.TurnTargetSlow(target->GetTransfromPtr()->GetPos(), 5);
+
 			if (cool == 0) {
 				Status* towerdata = data->getData();
 				if (towerdata->firetype == 1) {
@@ -58,7 +58,11 @@ void Tower::Update() {
 					Missile2* newMissile = new Missile2(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
 					mainState::attacks.push_back(newMissile);
 				}
-				else {
+				if(towerdata->firetype == 3) {
+					Missile1* newMissile = new Missile1(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
+					mainState::attacks.push_back(newMissile);
+				}
+				if (towerdata->firetype == 4) {
 					Missile1* newMissile = new Missile1(GetCannonHole(towerdata), transform.GetDir(), target, data->getData()->damage);
 					mainState::attacks.push_back(newMissile);
 				}
@@ -101,10 +105,10 @@ glm::vec3 Tower::GetCannonHole(Status* _data) {
 	if (_data->modeltype == 3) {
 		cannonHolePos = glm::vec3(0, 0.5f, 0.0f);
 		if (cannonSwitch) {	//왼쪽 포구로 발사
-			cannonHolePos.x = 0.1f;
+			cannonHolePos.x = 0.2f;
 		}
 		else {	//오른쪽 포구로 발사
-			cannonHolePos.x = -0.1f;
+			cannonHolePos.x = -0.2f;
 		}
 	}
 	//회전

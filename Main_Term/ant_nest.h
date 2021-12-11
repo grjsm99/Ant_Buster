@@ -6,7 +6,9 @@
 class AntNest : public Object {
 	Model3D* myModel = &GloVar::model_antNest;
 	Texture* texture = &GloVar::AntNestTexture;
-	int cooldown = 100; // 프레임 단위
+	int cooldown = 120; // 프레임 단위
+	int stage = 1;
+	int antSpawnCount = 0;
 	int cool = 0;
 public:
 	AntNest();

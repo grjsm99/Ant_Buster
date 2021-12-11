@@ -4,7 +4,7 @@ Camera mainState::camera;
 Light mainState::sun;
 Plain mainState::plain;
 AntNest mainState::antNest;
-int mainState::gold = 993;
+int mainState::gold = 8;
 selectedUI mainState::selected;
 numUI mainState::numui;
 techUI mainState::techui;
@@ -160,7 +160,7 @@ GLvoid mainState::Mouse(int button, int state, int x, int y) {
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		if (y > -0.5) { // ui밖 클릭시
+		if (y > -0.2) { // ui밖 클릭시
 			//std::cout << "x = " << x << " y = " << y << std::endl;
 		//std::cout << "사각형 클릭!!" << std::endl;
 			float m22 = 1.0f / std::tan(glm::radians(45.0f / 2.0f));
@@ -210,6 +210,7 @@ GLvoid mainState::Motion(int x, int y) {
 
 GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	switch (key) {
+
 	case '1':
 	{
 		if (!isselect) break;
@@ -263,15 +264,33 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 	}
 	case 't':
 		glm::vec2 selectIndex = selected.getIndex();
-		if (groundIndex[(int)selectIndex.y][(int)selectIndex.x] == 1 && gold >= 10) {
+		if (groundIndex[(int)selectIndex.y][(int)selectIndex.x] == 1 && gold >= 5) {
 			groundIndex[(int)selectIndex.y][(int)selectIndex.x] = 2;
 			Tower* t = new Tower(selectIndex.x, selectIndex.y);
-			//t->Upgrade(1);
+			
 			techui.InitTexture(t->getTechTree());
 			towers.push_back(t);
 			selecttower = t;
-			gold -= 10;
+			gold -= 5;
 		}
+		break;
+	case 'j':
+		camera.RotateLeft(1);
+		break;
+	case 'l':
+		camera.RotateRight(1);
+		break;
+	case 'k':
+		camera.RotateDown(1);
+		break;
+	case'i':
+		camera.RotateUp(1);
+		break;
+	case 'o':
+		camera.defaultview();
+		break;
+	case 'p':
+		camera.Topview();
 		break;
 	case 'y':
 		cakeList.pop_back();
@@ -281,9 +300,6 @@ GLvoid mainState::Keyboard(unsigned char key, int x, int y) {
 		break;
 	case 'm':
 		sun.SetColor(1, 1, 1);
-		break;
-	case 'p':
-		glutPostRedisplay();
 		break;
 	case 'q':
 		glutDestroyWindow(1);

@@ -183,7 +183,7 @@ void GloVar::InitGloVar() {
 	// 래피드 타워트리
 	techtree* rapidturret1 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[1], 6, 4, 500, 8, tInfoTexture[1], 1, 1);
 	root.setLeft(rapidturret1);
-	techtree* rapidturret2 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[2], 6, 4, 250, 20, tInfoTexture[2], 1, 1);
+	techtree* rapidturret2 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[2], 6, 4, 250, 12, tInfoTexture[2], 1, 1);
 	rapidturret1->setLeft(rapidturret2);
 	techtree* rapidturret3 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[11], 7, 6, 143, 30, tInfoTexture[11], 1, 1);
 	rapidturret2->setLeft(rapidturret3);
@@ -197,7 +197,7 @@ void GloVar::InitGloVar() {
 	techtree* heavyturret1 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[4], 6, 7, 1000, 5, tInfoTexture[4], 1, 1);
 	root.setMid(heavyturret1);
 
-	techtree* heavyturret2 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[5], 6, 15, 1000, 15, tInfoTexture[5], 1, 1);
+	techtree* heavyturret2 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[5], 6, 19, 1000, 15, tInfoTexture[5], 1, 1);
 	heavyturret1->setLeft(heavyturret2);
 
 	techtree* heavyturret3 = new techtree(&GloVar::model_1turret, &GloVar::turretTexture[13], 7, 98, 1000, 70, tInfoTexture[13], 1, 1);
@@ -213,7 +213,7 @@ void GloVar::InitGloVar() {
 	techtree* doubleturret1 = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[7], 4, 6, 500, 9, tInfoTexture[7], 1, 2);
 	root.setRight(doubleturret1);
 
-	techtree* heavydouble = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[8], 4, 25, 500, 18, tInfoTexture[8], 1, 2);
+	techtree* heavydouble = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[8], 4, 18, 500, 21, tInfoTexture[8], 1, 2);
 	doubleturret1->setLeft(heavydouble);
 
 	techtree* poisonturret1 = new techtree(&GloVar::model_2turret, &GloVar::turretTexture[9], 2, 50, 200, 40, tInfoTexture[9], 4, 2);

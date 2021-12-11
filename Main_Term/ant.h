@@ -7,7 +7,7 @@ class Attack;	//¼­·ÎÀÇ Çì´õÆÄÀÏÀ» includeÇÏ¸é ¿À·ù°¡ ³­´Ù.(±×´ë½Å Å¬·¡½º¸¦ ¼±¾ğÇ
 class Ant : public Object {
 	Model3D* myModel = &GloVar::model_ant;
 	Texture* texture = &GloVar::AntTexture;
-	float hp = 200;
+	float hp;
 	float speed = 0.05f;
 	float moveDist = 0;
 	bool isplusz = true;
@@ -16,7 +16,7 @@ class Ant : public Object {
 	std::vector<Attack*> pursuers;
 
 public:
-	Ant();
+	Ant(int);
 	~Ant();
 
 	void Draw();

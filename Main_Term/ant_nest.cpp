@@ -25,9 +25,12 @@ void AntNest::Draw() {
 void AntNest::Update() {
 	cool--;
 	if (cool <= 0) {
+		antSpawnCount++;
 		cool = cooldown;
-		Ant* newAnt = new Ant();
+		Ant* newAnt = new Ant(stage);
 		mainState::ants.push_back(newAnt);
+		if (antSpawnCount % 10 == 0)	stage++;
+		if (antSpawnCount % 20 == 0 && cooldown > 60) cooldown--;
 	}
 }
 

@@ -6,7 +6,6 @@
 Missile1::Missile1(glm::vec3 _pos, glm::vec3 _dir, Ant* _target, float _dmg) {
 	myModel = &GloVar::model_missile1;
 	texture = &GloVar::missile1Texture;
-	
 	transform.SetPos(_pos);
 	transform.SetDir(_dir);
 

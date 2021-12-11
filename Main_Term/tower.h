@@ -22,6 +22,8 @@ public:
 	void Draw();
 	void Upgrade(int);
 	techtree* getTechTree() { return data; };
+	Ant* getTarget() { return target; };
+	void InitTarget() { target = NULL; };
 	glm::vec2 towerIndex() { return glm::vec2(tx, tz); };
 	glm::vec3 GetCannonHole(Status*);
 };

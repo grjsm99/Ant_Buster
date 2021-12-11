@@ -8,6 +8,7 @@ protected:
 	float speed;
 	float spinSpeed;
 	float lifeTime;
+
 public:
 	Missile1(glm::vec3 _pos, glm::vec3 _dir, Ant* _target, float _dmg);
 	~Missile1();
